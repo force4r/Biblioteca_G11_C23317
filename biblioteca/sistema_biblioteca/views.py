@@ -1,11 +1,16 @@
 from django.shortcuts import render
+from django.urls import reverse
 from django.http import HttpResponse, HttpResponseNotFound
 
 
 # Create your views here.
 
-def index(request):
-   return HttpResponse("Bienvenido a la biblioteca")
+def index (request):
+   print(reverse('agregar_libro'))
+   print(request.method)
+   context={}
+   
+   return render(request,'sistema_biblioteca/index.html', context)
 
 def agregar_libro(request):
    return HttpResponse("Agregar libro")

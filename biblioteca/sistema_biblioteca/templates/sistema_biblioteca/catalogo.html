@@ -41,14 +41,35 @@
 </header>
     <main>
         <section>
-           
             {% for item in cat_lista %}
                 <article>
-                    <p>Nombre: {{item.nombre_autor}}<br>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="list-unstyled">
+                                    <li class="list-item">
+                                        Nombre: {{item.nombre_autor}}
+                                    </li>
+                                    <li class="list-item">
+                                        Apellido: {{item.apellido_autor}}
+                                    </li>
+                                    <li class="list-item">
+                                        Libro: {{item.nombre_libro}}
+                                    </li>
+                                    <li class="list-item">
+                                        Año de la edición: {{item.año_edicion}}
+                                    </li>
+                        
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <p>Nombre: {{item.nombre_autor}}<br>
                     Apellido: {{item.apellido_autor}}<br>
                     Libro: {{item.nombre_libro}}<br>
                     Año de la edición: {{item.año_edicion}}
-                </p>
+                </p> -->
 
                 </article>
             {% endfor %}

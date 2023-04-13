@@ -136,7 +136,7 @@ celerybeat.pid
 .venv
 env/
 /bibliotecavenv/
-/bibliotecavirt/
+biblioteca/bibliotecavirt/
 /venv/
 ENV/
 env.bak/

@@ -46,7 +46,10 @@
                     <article>
                         <p>
                             Nombre: {{item.nombre_autor}}<br>
-                            Apellido: {{item.apellido_autor}}<br>
+                            Apellido:
+                            {% filter upper %}
+                                {{item.apellido_autor}}<br>
+                            {% endfilter %}
                             Libro: {{item.nombre_libro}}<br>
                             Año de ingreso: {{item.año_ingreso}}<br>
                         </p>
@@ -59,7 +62,10 @@
                     <article>
                         <p>
                             Nombre: {{item.nombre_autor}}<br>
-                            Apellido: {{item.apellido_autor}}<br>
+                            Apellido:
+                            {% filter upper %}
+                                {{item.apellido_autor}}<br>
+                            {% endfilter %}
                             Libro: {{item.nombre_libro}}<br>
                             Año de ingreso: {{item.año_ingreso}}<br>
                         </p>

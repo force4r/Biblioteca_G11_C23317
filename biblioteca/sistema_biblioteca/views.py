@@ -11,48 +11,51 @@ def index (request):
    context={}
    
    return render(request,'sistema_biblioteca/index.html', context)
-
-def catalogo(request):
+def catalogo(request, año=0 ):
    print(request.method)
+   if int(año) < 2006 and int(año) is not 0:
+        return HttpResponseNotFound("<h4>No hay datos previos al año 2006</h4>")
+
    catalogo = [
       {
          'nombre_autor':'Jorge Luis',
          'apellido_autor':'Borges',
          'nombre_libro':'El Aleph',
-         'año_edicion': 2015
+         'año_ingreso': 2015
       },
       {
          'nombre_autor':'Jorge Luis',
          'apellido_autor':'Borges',
          'nombre_libro':'El Inmortal',
-         'año_edicion': 2006
+         'año_ingreso': 2006
       },
 
       {
          'nombre_autor':'Jorge Luis',
          'apellido_autor':'Borges',
          'nombre_libro':'El Sur',
-         'año_edicion': 2020
+         'año_ingreso': 2020
       },
       {
          'nombre_autor':'Bram',
          'apellido_autor':'Stoker',
          'nombre_libro':'Drácula',
-         'año_edicion': 2015
+         'año_ingreso': 2015
       },
       {
          'nombre_autor':'Alejandro',
          'apellido_autor':'Dumas',
          'nombre_libro':'El Conde de Montecristo',
-         'año_edicion': 2010
+         'año_ingreso': 2010
       },
    ]    
    context = {
       'user_name': 'Carlos',
       'user_lastname': 'Lopez',
       'cat_lista': catalogo,
+      'año_ingreso': año
    }       
-
+   
    return render(request,'sistema_biblioteca/catalogo.html', context)
 
 

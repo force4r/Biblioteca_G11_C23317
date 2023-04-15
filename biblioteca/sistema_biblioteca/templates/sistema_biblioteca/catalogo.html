@@ -34,49 +34,48 @@
                     <a class="nav-link" href="#">Contacto</a>
                 </li>
             </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-</header>
+    </header>
     <main>
         <section>
             {% for item in cat_lista %}
-                <article>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <ul class="list-unstyled">
-                                    <li class="list-item">
-                                        Nombre: {{item.nombre_autor}}
-                                    </li>
-                                    <li class="list-item">
-                                        Apellido: {{item.apellido_autor}}
-                                    </li>
-                                    <li class="list-item">
-                                        Libro: {{item.nombre_libro}}
-                                    </li>
-                                    <li class="list-item">
-                                        Año de la edición: {{item.año_edicion}}
-                                    </li>
-                        
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- <p>Nombre: {{item.nombre_autor}}<br>
-                    Apellido: {{item.apellido_autor}}<br>
-                    Libro: {{item.nombre_libro}}<br>
-                    Año de la edición: {{item.año_edicion}}
-                </p> -->
-
-                </article>
+                {% if año_ingreso == 0 %}
+                    <article>
+                        <p>
+                            Nombre: {{item.nombre_autor}}<br>
+                            Apellido: {{item.apellido_autor}}<br>
+                            Libro: {{item.nombre_libro}}<br>
+                            Año de ingreso: {{item.año_ingreso}}<br>
+                        </p>
+                    </article>
+                {% endif %}
             {% endfor %}
+    
+            {% for item in cat_lista %}
+                {% if año_ingreso == item.año_ingreso %}
+                    <article>
+                        <p>
+                            Nombre: {{item.nombre_autor}}<br>
+                            Apellido: {{item.apellido_autor}}<br>
+                            Libro: {{item.nombre_libro}}<br>
+                            Año de ingreso: {{item.año_ingreso}}<br>
+                        </p>
+                    </article>
+                {% endif %}
+            {% endfor %}
+    
+    
         </section>
-        
-        
+    
+    
     </main>
-    <footer></footer>
+        
+    
+    <footer>
+      
+    </footer>
 </body>
 </html>

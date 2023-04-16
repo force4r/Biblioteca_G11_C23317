@@ -13,9 +13,11 @@ def index (request):
    return render(request,'sistema_biblioteca/index.html', context)
 def catalogo(request, año=0 ):
    print(request.method)
-   if int(año) < 2006 and int(año) is not 0:
-        return HttpResponseNotFound("<h4>No hay datos previos al año 2006</h4>")
-
+   if int(año) < 2015 and int(año) != 0:
+        return HttpResponseNotFound("<h4>No hay datos previos al año 2015.</h4>")
+   if int(año) == 2017 or int(año) == 2019 or int(año) == 2020 or int(año) == 2021:
+      return HttpResponseNotFound("<h4>No hay datos disponibles para este año.</h4>")
+   
    catalogo = [
       {
          'nombre_autor':'Jorge Luis',
@@ -27,14 +29,14 @@ def catalogo(request, año=0 ):
          'nombre_autor':'Jorge Luis',
          'apellido_autor':'Borges',
          'nombre_libro':'El Inmortal',
-         'año_ingreso': 2006
+         'año_ingreso': 2016
       },
 
       {
          'nombre_autor':'Jorge Luis',
          'apellido_autor':'Borges',
          'nombre_libro':'El Sur',
-         'año_ingreso': 2020
+         'año_ingreso': 2022
       },
       {
          'nombre_autor':'Bram',
@@ -46,7 +48,7 @@ def catalogo(request, año=0 ):
          'nombre_autor':'Alejandro',
          'apellido_autor':'Dumas',
          'nombre_libro':'El Conde de Montecristo',
-         'año_ingreso': 2010
+         'año_ingreso': 2018
       },
    ]    
    context = {
@@ -57,6 +59,7 @@ def catalogo(request, año=0 ):
    }       
    
    return render(request,'sistema_biblioteca/catalogo.html', context)
+
 
 
 def agregar_libro(request):

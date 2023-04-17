@@ -1,6 +1,37 @@
 {% extends 'sistema_biblioteca/base.html' %}
-{% block titulo %}Catalogo{% endblock %}
-{% block contenido %}
+{% load static %}
+{% block titulo %}Biblioteca Virtual Comision 23317{% endblock %}
 
- index
+{% block contenido %}
+<div class="container d-flex justify-content-center">
+  <div class="w-100">
+    <div id="carouselExampleIndicators" class="carousel slide">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{% static 'sistema_biblioteca/img/carrusel/slide1.jpg' %}" class="d-block w-100 carousel-img" alt="slide1">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'sistema_biblioteca/img/carrusel/slide2.jpg' %}" class="d-block w-100 carousel-img" alt="slide2">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'sistema_biblioteca/img/carrusel/slide3.jpg' %}" class="d-block w-100 carousel-img" alt="slide3">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="butt
+      on" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</div>  
 {% endblock %}

@@ -1,33 +1,71 @@
 {% extends 'sistema_biblioteca/base.html' %}
+{% load static %}
 {% block titulo %}Catalogo{% endblock %}
 {% block contenido %}
 
-<section class="grid">
+<section>
+<br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>
+                Cátalogo según fecha de ingreso a la biblioteca
+            </h3>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="btn-group btn-group-lg" role="group">
 
+                <button class="btn btn-light" type="button">
+                    <a href="{% url 'catalogo' %}">Catálogo completo</a>
+                </button>
+                <button class="btn btn-light" type="button">
+                    <a href="{% url 'catalogo' 2015 %}">2015</a>
+                </button>
+                <button class="btn btn-light" type="button">
+                    <a href="{% url 'catalogo' 2016 %}">2016</a>
+                </button>
+                <button class="btn btn-light" type="button">
+                    <a href="{% url 'catalogo' 2018 %}">2018</a>
+                </button>
+                <button class="btn btn-light" type="button">
+                    <a href="{% url 'catalogo' 2022 %}">2022</a>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
 {% for item in cat_lista %}
 {% if año_ingreso == 0 or año_ingreso == item.año_ingreso %}
-<article>
+<article style="margin-left: 20px;">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <ul class="list-unstyled">
-                    <li class="list-item">
-                        Nombre: {{item.nombre_autor}}
-                    </li>
-                    <li class="list-item">
-                        Apellido:
-                        {% filter upper %}
-                        {{item.apellido_autor}}
-                        {% endfilter %}
-                    </li>
-                    <li class="list-item">
-                        Libro: {{item.nombre_libro}}
-                    </li>
-                    <li class="list-item">
-                        Año de ingreso: {{item.año_ingreso}}
-                    </li>
+                <div class="card">
+                    <h5 class="card-header">
+                        {{item.nombre_libro}}
+                    </h5>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Autor: {% filter upper %}
+                            {{item.apellido_autor}},
+                            {% endfilter %}
+                            {{item.nombre_autor}}<br>
+                            Descripción: {{item.descripcion}}<br>
+                            Año de ingreso: {{item.año_ingreso}}
 
- 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
 </article>
 {% endif %}
 {% endfor %}

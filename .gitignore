@@ -141,6 +141,7 @@ biblioteca/bibliotecavirt/
 ENV/
 env.bak/
 venv.bak/
+/biblioteca/bibliovenv/
 
 # Spyder project settings
 .spyderproject

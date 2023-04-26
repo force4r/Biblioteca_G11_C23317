@@ -5,9 +5,11 @@ urlpatterns = [
     path('', views.index, name="index"),
     path('catalogo/<int:año>/', views.catalogo, name="catalogo"),
     path('catalogo/', views.catalogo, name="catalogo"),
+    path('libros/',views.libros, name='libros'),
+    path('autores/',views.autores, name='autores'),
     path('agregar_libro/', views.agregar_libro, name="agregar_libro"),
     path('eliminar_libro/', views.eliminar_libro, name="eliminar_libro"),
     path('agregar_autor/', views.agregar_autor, name="agregar_autor"),
     path('eliminar_autor/', views.eliminar_autor, name="eliminar_autor"),
-    path('libros/',views.libros, name='libros')
+    
 ]

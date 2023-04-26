@@ -1,0 +1,58 @@
+{% extends 'sistema_biblioteca/base.html' %}
+{% load static %}
+{% block titulo %}Autores{% endblock %}
+{% block contenido %}
+<div class="container-fluid my-3">
+    <h2>Gestión de autores</h2>
+    <div class="row">
+        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 py-4">
+            <form>
+                <div class="mb-3">
+                    <label for="buscar" class="form-buscar">Buscar autor</label>
+                    <input type="text" class="form-control" name="" id="buscar"
+                        placeholder="Búsqueda por título o autor" autofocus>
+                </div>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-success" >
+                        <a href="">Agregar</a>
+                    </button>
+                    <button class="btn btn-success">
+                        <a href="">Modificar</a>
+                    </button>
+                    <button class="btn btn-success">
+                        <a href="">Eliminar</a>
+                    </button>
+                    <button class="btn btn-success">
+                        <a href="">Guardar</a>
+                    </button>
+                    <button class="btn btn-secondary">
+                        <a href="">Eliminar</a>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 py-4">
+            <div class="row">
+                {% for item in cat_lista  %}
+                <div class="card" style="width: 18rem;">
+                    <img src="{% static 'sistema_biblioteca/img/libro.png' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.nombre_autor}}</h5>
+                        <p class="card-text"></p>
+                        <p class="card-text">
+                            Autor: {% filter upper %}
+                            {{item.apellido_autor}},
+                            {% endfilter %}
+                            {{item.nombre_libro}}<br>
+                        </p>
+                        <a href="#" class="btn btn-primary">Seleccionar</a>
+                    </div>
+                </div>
+                {% endfor %}
+    
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

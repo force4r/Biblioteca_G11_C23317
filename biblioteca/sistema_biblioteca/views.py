@@ -69,7 +69,8 @@ def catalogo(request, año=0):
    return render(request, 'sistema_biblioteca/catalogo.html', context)
 
 
-def libros(request):
+def libros(request, año = 2022):
+   print(request.method)
    catalogo = [
       {
          'nombre_autor': 'Jorge Luis',
@@ -106,7 +107,7 @@ def libros(request):
          'año_ingreso': 2018,
           'descripcion': 'Edmond Dants, un joven marinero de Marsella, est a punto de convertirse en capitn de su propio barco y casarse con su am ada. Pero algunos enemigos rencorosos provocan su detencin, y lo condenan a prisin perpetua. Luego, el nico compaero de Edmond en prisin le revela su plan secreto de fuga y una car ta con instrucciones de riquezas ocultas en la isla de Monte cristo. Aquel misterioso tesoro le permitir a Edmond financi ar el sueo de crearse una nueva identidad: el enigmtico y po deroso conde de Montecristo. En esta novela, Alejandro Dumas emplea todos los elementos del drama: el suspenso, la intri ga, el amor, la venganza, la aventura apasionante y el triun fo del bien sobre el mal, que contribuyen al irresistible at ractivo de esta historia clsica y atemporal.'
       },
-       {
+      {
          'nombre_autor': 'Ivo',
          'apellido_autor': 'Andric',
          'nombre_libro': 'Un Puente sobre el Drina',
@@ -116,11 +117,13 @@ def libros(request):
    ]
    context = {
       'cat_lista': catalogo,
+      'año_ingreso': año,
    }       
    return render(request,'sistema_biblioteca/libros.html', context)
 
-def autores(request):
-   catalogo = [
+
+def autores(request, año=2022):
+ catalogo = [
       {
          'nombre_autor': 'Jorge Luis',
          'apellido_autor': 'Borges',
@@ -156,7 +159,7 @@ def autores(request):
          'año_ingreso': 2018,
           'descripcion': 'Edmond Dants, un joven marinero de Marsella, est a punto de convertirse en capitn de su propio barco y casarse con su am ada. Pero algunos enemigos rencorosos provocan su detencin, y lo condenan a prisin perpetua. Luego, el nico compaero de Edmond en prisin le revela su plan secreto de fuga y una car ta con instrucciones de riquezas ocultas en la isla de Monte cristo. Aquel misterioso tesoro le permitir a Edmond financi ar el sueo de crearse una nueva identidad: el enigmtico y po deroso conde de Montecristo. En esta novela, Alejandro Dumas emplea todos los elementos del drama: el suspenso, la intri ga, el amor, la venganza, la aventura apasionante y el triun fo del bien sobre el mal, que contribuyen al irresistible at ractivo de esta historia clsica y atemporal.'
       },
-       {
+      {
          'nombre_autor': 'Ivo',
          'apellido_autor': 'Andric',
          'nombre_libro': 'Un Puente sobre el Drina',
@@ -164,10 +167,11 @@ def autores(request):
           'descripcion': 'Una crónica de cinco siglos donde Ivo Andric, Premio Nobel de Literatura, retrata la trágica historia de los Balcanes. La ciudad de Visegrad, situada a orillas del río Drina, tuvo un momento de esplendor en la Edad Media por constituir un puente de tránsito entre el mundo cristiano y el islámico. Esta novela recoge la historia de esa comunidad plural y conflictiva, tomando como pretexto narrativo el gran puente de piedra que cruza el río, lugar de encuentro y paseo para sus habitantes. La larga crónica abarca desde el siglo XVI hasta principios del XX, y nos da cuenta de las tensiones y enfrentamientos que se suceden y heredan de generación en generación.'
       },
    ]
-   context = {
+ context = {
       'cat_lista': catalogo,
+      'año_ingreso': año,
    }       
-   return render(request,'sistema_biblioteca/autores.html', context)
+ return render(request,'sistema_biblioteca/autores.html', context)
 
 def agregar_libro(request):
    return HttpResponse("Agregar libro")

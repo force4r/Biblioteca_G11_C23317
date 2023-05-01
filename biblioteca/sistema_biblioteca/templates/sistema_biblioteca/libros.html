@@ -25,15 +25,15 @@
                     <button class="btn btn-success">
                         <a href="">Guardar</a>
                     </button>
-                    <button class="btn btn-secondary">
-                        <a href="">Eliminar</a>
-                    </button>
+                   
                 </div>
             </form>
         </div>
         <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 py-4">
             <div class="row">
+                <p>Agregados recientemente</p>
                 {% for item in cat_lista  %}
+                {% if año_ingreso == item.año_ingreso %}
                 <div class="card" style="width: 18rem;">
                     <img src="{% static 'sistema_biblioteca/img/libro.png' %}" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -45,9 +45,10 @@
                             {% endfilter %}
                             {{item.nombre_autor}}<br>
                         </p>
-                        <a href="#" class="btn btn-primary">Seleccionar</a>
+                        <a href="{% url 'catalogo' año_ingreso %}" class="btn btn-primary">Seleccionar</a>
                     </div>
                 </div>
+                {% endif %}
                 {% endfor %}
     
             </div>

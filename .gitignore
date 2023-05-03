@@ -142,6 +142,7 @@ ENV/
 env.bak/
 venv.bak/
 /biblioteca/bibliovenv/
+bibliotecaVenv/
 
 # Spyder project settings
 .spyderproject
@@ -319,3 +320,7 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/powershell,windows,python,django,visualstudiocode
+
+# Archivos Oscar
+Sistema
+source

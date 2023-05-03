@@ -1,14 +1,14 @@
 {% extends 'sistema_biblioteca/base.html' %}
 {% load static %}
-{% block titulo %}Libros{% endblock %}
+{% block titulo %}Autores{% endblock %}
 {% block contenido %}
 <div class="container-fluid my-3">
-    <h2>Gestión de Libros</h2>
+    <h2>Gestión de autores</h2>
     <div class="row">
         <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 py-4">
             <form>
                 <div class="mb-3">
-                    <label for="buscar" class="form-buscar">Buscar libro</label>
+                    <label for="buscar" class="form-buscar">Buscar autor</label>
                     <input type="text" class="form-control" name="" id="buscar"
                         placeholder="Búsqueda por título o autor" autofocus>
                 </div>
@@ -25,7 +25,6 @@
                     <button class="btn btn-success">
                         <a href="">Guardar</a>
                     </button>
-                   
                 </div>
             </form>
         </div>
@@ -37,13 +36,13 @@
                 <div class="card" style="width: 18rem;">
                     <img src="{% static 'sistema_biblioteca/img/libro.png' %}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">{{item.nombre_libro}}</h5>
+                        <h5 class="card-title">{{item.nombre_autor}}</h5>
                         <p class="card-text"></p>
                         <p class="card-text">
                             Autor: {% filter upper %}
                             {{item.apellido_autor}},
                             {% endfilter %}
-                            {{item.nombre_autor}}<br>
+                            {{item.nombre_libro}}<br>
                         </p>
                         <a href="{% url 'catalogo' año_ingreso %}" class="btn btn-primary">Seleccionar</a>
                     </div>

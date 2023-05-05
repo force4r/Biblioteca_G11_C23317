@@ -18,7 +18,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <img src="{% static 'sistema_biblioteca/img/logo.svg' %}" alt=logo width="40px" height="40px" style="padding:5px;">
-                <a class="navbar-brand" href="#">Biblioteca Virtual</a>
+                <a class="navbar-brand" href="{% url 'index' %}">Biblioteca Virtual</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -38,7 +38,7 @@
                             <a class="nav-link" href="{% url 'catalogo' %}">Catalogo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contacto</a>
+                            <a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
                         </li>
                     </ul>
                 </div>
@@ -47,6 +47,15 @@
 
     </header>
     <main>
+        <section class="mensajes">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </section>
         {% block contenido %}{% endblock %}
     </main>
 

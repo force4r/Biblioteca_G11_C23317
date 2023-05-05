@@ -1,4 +1,5 @@
 from django import forms
+from typing import Any, Dict
 
 DESTINO_CHOICES = (
     ("informacion_personal", "Información general"),
@@ -40,4 +41,23 @@ class contactoForm(forms.Form):
         required=False
     )
 
-    
+    def clean(self) -> Dict[str, Any]:
+        # Se buscan los datos del form
+        super(contactoForm, self).clean()
+        nombre = self.cleaned_data.get('nombre')
+        asunto = self.cleaned_data.get('asunto')
+        
+        n=False
+        for i in nombre:
+            if i.isnumeric():
+                n=True
+        if n==True:
+            self.add_error('nombre','El nombre no puede contener números')
+        a=False
+        for i in asunto:
+             if i.isnumeric():
+                 a=True
+        if a==True:
+            self.add_error('asunto', 'El asunto no puede contener números')
+            
+        return self.cleaned_data

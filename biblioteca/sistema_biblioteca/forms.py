@@ -1,6 +1,5 @@
 from django import forms
-from typing import Any, Dict
-
+from typing import Any, Dict 
 DESTINO_CHOICES = (
     ("informacion_personal", "Información general"),
     ("recomendacion_libro", "Recomendación de libro"),
@@ -52,11 +51,11 @@ class contactoForm(forms.Form):
             if i.isnumeric():
                 n=True
         if n==True:
-            self.add_error('nombre','El nombre no puede contener números')
+            self.add_error('nombre','El nombre no puede contener números') 
         a=False
         for i in asunto:
              if i.isnumeric():
-                 a=True
+                a=True
         if a==True:
             self.add_error('asunto', 'El asunto no puede contener números')
             

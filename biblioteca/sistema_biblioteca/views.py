@@ -3,9 +3,7 @@ from django.urls import reverse
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from .forms import contactoForm
 from django.contrib import messages
-from django.core.exceptions import NON_FIELD_ERRORS
-
-
+from django.forms.utils import ErrorList
 
 # Create your views here.
 
@@ -192,7 +190,11 @@ def contacto(request):
          return HttpResponseRedirect(request.path_info)
       else:
          messages.error(request, 'Por favor revise los campos a completar', extra_tags="alert alert-danger")
-        
+         #muestra diccionario de errores
+         print(contacto_form.errors["nombre"].as_text)
+         
+            
+
    else:
       contacto_form = contactoForm()
 

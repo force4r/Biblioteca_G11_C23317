@@ -52,14 +52,15 @@
             <div class="col-md-12">
                 <div class="card">
                     <h5 class="card-header">
-                        {{item.nombre_libro}}
+                        {{item.titulo}}
                     </h5>
                     <div class="card-body">
                         <p class="card-text">
                             Autor: {% filter upper %}
-                            {{item.apellido_autor}},
+                            {{item.autor}},
                             {% endfilter %}
-                            {{item.nombre_autor}}<br>
+                            <!-- {{item.autor}}<br> -->
+                            <br>
                             Descripción: {{item.descripcion}}<br>
                             Año de ingreso: {{item.año_ingreso}}
 

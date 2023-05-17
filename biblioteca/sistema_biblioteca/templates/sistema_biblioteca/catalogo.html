@@ -1,6 +1,10 @@
 {% extends 'sistema_biblioteca/base.html' %}
 {% load static %}
+{%block extra_css %} <link rel="stylesheet" href="{% static 'sistema_biblioteca/css/catalogo.css' %}">{% endblock %}
 {% block titulo %}Catalogo{% endblock %}
+
+
+
 {% block contenido %}
 
 <section>
@@ -48,18 +52,21 @@
             <div class="col-md-12">
                 <div class="card">
                     <h5 class="card-header">
-                        {{item.nombre_libro}}
+                        {{item.titulo}}
                     </h5>
                     <div class="card-body">
                         <p class="card-text">
                             Autor: {% filter upper %}
-                            {{item.apellido_autor}},
+                            {{item.autor}},
                             {% endfilter %}
-                            {{item.nombre_autor}}<br>
+                            <!-- {{item.autor}}<br> -->
+                            <br>
                             Descripción: {{item.descripcion}}<br>
                             Año de ingreso: {{item.año_ingreso}}
 
                         </p>
+                        <img src="{% static 'sistema_biblioteca/img/libro.png' %}" class="card-img-top" alt="..."
+                            style="height: 120px; width: 90px;">
                     </div>
                 </div>
             </div>

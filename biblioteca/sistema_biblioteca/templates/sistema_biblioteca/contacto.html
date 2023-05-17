@@ -1,0 +1,49 @@
+{% extends 'sistema_biblioteca/base.html' %}
+{% load static %}
+{%block extra_css %} <link rel="stylesheet" href="{% static 'sistema_biblioteca/css/contacto.css' %}"> {% endblock %}
+{% block titulo %}Contacto{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <h2 class="mt-3">Envíenos su consulta</h2>
+    <p class="mt-3">Si lo desea, puede enviarnos también una recomendación de los libros que le gustaría encontrar en nuestra Biblioteca.</p>
+    <div class="row my-4">
+        <div class="col-md-12">
+            <form action="" method="POST" class="form">
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{form.nombre.errors}}
+                    {{form.nombre.label_tag}}
+                    <div>{{form.nombre}}</div>
+                </div>
+                <div class="mb-3">
+                    {{form.email.errors}}
+                    {{form.email.label_tag}}
+                    <div>{{form.email}}</div>
+                </div>
+                <div class="mb-3">
+                    {{form.asunto.errors}}
+                    {{form.asunto.label_tag}}
+                    <div>{{form.asunto}}</div>
+                </div>
+                <div class="mb-3">
+                    {{form.destino.errors}}
+                    {{form.destino.label_tag}}
+                    <div>{{form.destino}}</div>
+                </div>
+                <div class="mb-3">
+                    {{form.mensaje.errors}}
+                    {{form.mensaje.label_tag}}
+                    <div>{{form.mensaje}}</div>
+                </div>
+                <div class="mb-3">
+                    {{form.recibir_informacion.errors}}
+                    {{form.recibir_informacion}}
+                    {{form.recibir_informacion.label_tag}}
+                </div>
+                <button type="submit" class="btn btn-secondary">Enviar</button>
+            </form>
+        </div>
+    </div>
+</div>    
+{% endblock %}

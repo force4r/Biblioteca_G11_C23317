@@ -1,6 +1,8 @@
 {% extends 'sistema_biblioteca/base.html' %}
 {% load static %}
+{%block extra_css %} <link rel="stylesheet" href="{% static 'sistema_biblioteca/css/libros.css' %}"> {% endblock %}
 {% block titulo %}Libros{% endblock %}
+
 {% block contenido %}
 <div class="container-fluid my-3">
     <h2>Gestión de Libros</h2>
@@ -25,15 +27,15 @@
                     <button class="btn btn-success">
                         <a href="">Guardar</a>
                     </button>
-                    <button class="btn btn-secondary">
-                        <a href="">Eliminar</a>
-                    </button>
+                
                 </div>
             </form>
         </div>
         <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 py-4">
             <div class="row">
+                <p>Agregados recientemente</p>
                 {% for item in cat_lista  %}
+                {% if año_ingreso == item.año_ingreso %}
                 <div class="card" style="width: 18rem;">
                     <img src="{% static 'sistema_biblioteca/img/libro.png' %}" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -45,11 +47,20 @@
                             {% endfilter %}
                             {{item.nombre_autor}}<br>
                         </p>
-                        <a href="#" class="btn btn-primary">Seleccionar</a>
+                        <a href="{% url 'catalogo' año_ingreso %}" class="btn btn-primary">Seleccionar</a>
                     </div>
                 </div>
+                {% endif %}
                 {% endfor %}
-    
+                <p>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="{% url 'catalogo' %}" class="btn btn-primary btn-lg" type="button">Catálogo completo</a>
+                        </div>
+                    </div>
+                </div>
+                </p>
             </div>
         </div>
     </div>

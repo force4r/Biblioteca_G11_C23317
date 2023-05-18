@@ -57,9 +57,9 @@
                     <div class="card-body">
                         <p class="card-text">
                             Autor: {% filter upper %}
-                            {{item.autor}},
+                            {{item.autor.apellido}},
                             {% endfilter %}
-                            <!-- {{item.autor}}<br> -->
+                            {{item.autor.nombre}}
                             <br>
                             Descripción: {{item.descripcion}}<br>
                             Año de ingreso: {{item.año_ingreso}}

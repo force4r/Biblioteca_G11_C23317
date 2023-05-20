@@ -57,12 +57,31 @@
                     <div class="card-body">
                         <p class="card-text">
                             Autor: {% filter upper %}
-                            {{item.autor}},
+                            {{item.autor.apellido}},
                             {% endfilter %}
-                            <!-- {{item.autor}}<br> -->
+                            {{item.autor.nombre}}
                             <br>
+                            Genero: {{item.genero.genero}}<br>
                             Descripción: {{item.descripcion}}<br>
-                            Año de ingreso: {{item.año_ingreso}}
+                            Editorial/es: 
+                            {% for editorial in editorial %}
+                                {% for libro in editorial.libros.all %}
+                                    {% if libro == item %}
+                                        {{editorial.editorial}}.
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}<br>
+                            Año de ingreso: {{item.año_ingreso}}<br>
+                            Año de edición: {{item.año_edicion}}<br>
+                            Idioma:
+                            {% for idioma in idioma %}
+                            {% for libro in idioma.libros.all %}
+                                {% if libro == item %}
+                                        {{idioma.idioma}}
+                                {% endif %}
+                            {% endfor %}
+                            {% endfor %}
+                            
 
                         </p>
                         <img src="{% static 'sistema_biblioteca/img/libro.png' %}" class="card-img-top" alt="..."
@@ -77,6 +96,11 @@
 {% endif %}
 {% endfor %}
 
-
+<!-- {% for idioma in idioma %}
+    {% for libro in idioma.libros.all %}
+        {{libro.titulo}}
+        {{idioma.idioma}}
+    {% endfor %}
+{% endfor %}-->
 </section>
 {% endblock %}

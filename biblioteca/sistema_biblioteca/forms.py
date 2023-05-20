@@ -60,3 +60,30 @@ class contactoForm(forms.Form):
             self.add_error('asunto', 'El asunto no puede contener números')
             
         return self.cleaned_data
+    
+
+    
+    
+
+class bibliotecaform(forms.Form):
+    
+    titulo = forms.CharField(
+        min_length= 3,
+        label='Titulo',
+        widget= forms.TextInput(attrs={'class':'form-control'}),
+        required=True
+    )
+    
+    autor = forms.CharField(
+       min_length= 3,
+       label='Nombre del Autor',
+       widget= forms.TextInput(attrs={'class':'form-control'}),
+       required=True 
+    )
+
+    genero = forms.CharField(
+       min_length= 3,
+       label='Genero',
+       widget= forms.TextInput(attrs={'class':'form-control'}),
+       required=True 
+    )

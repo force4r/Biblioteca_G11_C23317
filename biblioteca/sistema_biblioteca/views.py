@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
-from .forms import contactoForm
+from .forms import contactoForm 
 from django.contrib import messages
 from django.forms.utils import ErrorList
 from .models import Libro, Idioma, Editorial
+from .forms import bibliotecaform
+
 # Create your views here.
 
 def index(request):
@@ -137,6 +139,19 @@ def libros(request, año = 2022):
 
 
 def autores(request, año=2022):
+   if request.method == 'POST':
+      biblioteca_form = bibliotecaform(request.POST)
+
+      if biblioteca_form.is_valid():
+         return ("autores")
+
+   else:
+      biblioteca_form = bibliotecaform()
+
+   context = { 'form' : biblioteca_form}
+   return render(request, 'sistema_biblioteca/autores.html', context)
+
+   
    # catalogo = [
    #         {
    #       'nombre_autor': 'Jorge Luis',
@@ -185,12 +200,7 @@ def autores(request, año=2022):
    #    },
 
    # ]
-   catalogo = Libro.objects.all()
-   context = {
-      'cat_lista': catalogo,
-      'año_ingreso': año,
-   }       
-   return render(request,'sistema_biblioteca/autores.html', context)
+   
 
 def contacto(request):
    if request.method == "POST":

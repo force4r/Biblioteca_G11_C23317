@@ -69,14 +69,16 @@ def catalogo(request, año=0):
    #       'descripcion': 'Edmond Dants, un joven marinero de Marsella, est a punto de convertirse en capitn de su propio barco y casarse con su am ada. Pero algunos enemigos rencorosos provocan su detencin, y lo condenan a prisin perpetua. Luego, el nico compaero de Edmond en prisin le revela su plan secreto de fuga y una car ta con instrucciones de riquezas ocultas en la isla de Monte cristo. Aquel misterioso tesoro le permitir a Edmond financi ar el sueo de crearse una nueva identidad: el enigmtico y po deroso conde de Montecristo. En esta novela, Alejandro Dumas emplea todos los elementos del drama: el suspenso, la intri ga, el amor, la venganza, la aventura apasionante y el triun fo del bien sobre el mal, que contribuyen al irresistible at ractivo de esta historia clsica y atemporal.'
    #    },
    # ]
-   libro = Libro.objects.all()
-   idioma = Idioma.objects.all().order_by("-id")
-   editorial = Editorial.objects.all().order_by("-id")
+   libro = Libro.objects.all().order_by("-id")
+   # idioma = Idioma.objects.all().order_by("-id")
+   # editorial = Editorial.objects.all().order_by("-id")
+   # idioma = Idioma.objects.all()
+   # editorial = Editorial.objects.all()
    context = {
-      'cat_lista': libro,
+      'libro': libro,
       'año_ingreso': año,
-      'idioma': idioma,
-      'editorial': editorial
+      # 'idioma': idioma,
+      # 'editorial': editorial,
    }
    return render(request, 'sistema_biblioteca/catalogo.html', context)
 

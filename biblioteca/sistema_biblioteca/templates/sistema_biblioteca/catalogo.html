@@ -44,42 +44,34 @@
     </div>
 </div>
 <br>
-{% for item in cat_lista %}
-{% if año_ingreso == 0 or año_ingreso == item.año_ingreso %}
+{% for libro in libro %}
+{% if año_ingreso == 0 or año_ingreso == libro.año_ingreso %}
 <article style="margin-left: 20px;">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <h5 class="card-header">
-                        {{item.titulo}}
+                        {{libro.titulo}}
                     </h5>
                     <div class="card-body">
                         <p class="card-text">
                             Autor: {% filter upper %}
-                            {{item.autor.apellido}},
+                            {{libro.autor.apellido}},
                             {% endfilter %}
-                            {{item.autor.nombre}}
+                            {{libro.autor.nombre}}
                             <br>
-                            Genero: {{item.genero.genero}}<br>
-                            Descripción: {{item.descripcion}}<br>
+                            Genero: {{libro.genero.genero}}<br>
+                            Descripción: {{libro.descripcion}}<br>
                             Editorial/es: 
-                            {% for editorial in editorial %}
-                                {% for libro in editorial.libros.all %}
-                                    {% if libro == item %}
-                                        {{editorial.editorial}}.
-                                    {% endif %}
-                                {% endfor %}
+                            {% for editorial in libro.editoriales.all %}
+                                        {{editorial.editorial}}
                             {% endfor %}<br>
-                            Año de ingreso: {{item.año_ingreso}}<br>
-                            Año de edición: {{item.año_edicion}}<br>
+                            Año de ingreso: {{libro.año_ingreso}}<br>
+                            Año de edición: {{libro.año_edicion}}<br>
                             Idioma:
-                            {% for idioma in idioma %}
-                            {% for libro in idioma.libros.all %}
-                                {% if libro == item %}
+                            {% for idioma in libro.idiomas.all %}
                                         {{idioma.idioma}}
-                                {% endif %}
-                            {% endfor %}
                             {% endfor %}
                             
 

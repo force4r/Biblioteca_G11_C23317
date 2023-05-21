@@ -2,10 +2,10 @@ from django.db import models
 
 # Create your models here.
 class Persona(models.Model):
-     nombre = models.CharField(max_length=50, verbose_name="Nombre")
-     apellido = models.CharField(max_length=80, verbose_name="Apellido")
-     class Meta:
-         abstract =True
+    nombre = models.CharField(max_length=50, verbose_name="Nombre")
+    apellido = models.CharField(max_length=80, verbose_name="Apellido")
+    class Meta:
+        abstract =True
 class Usuario(Persona):
     mail=models.EmailField(max_length=128, verbose_name="Email")
 class Autor(Persona):

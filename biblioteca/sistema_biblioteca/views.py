@@ -148,10 +148,10 @@ def autores(request, año=2022):
          bibliotecaform.cleaned_data['autor']
          bibliotecaform.cleaned_data['genero']
 
-         messages.success(request, 'La informacion ha sido cargada', )
+         messages.success(request, 'La informacion ha sido cargada', extra_tags="alert alert-danger list-unstyled")
          return HttpResponseRedirect(request.path_info)
       else:
-         messages.error(request, 'Por favor revise los campos a completar', extra_tags="alert alert-danger")
+         messages.error(request, 'Por favor revise los campos a completar', extra_tags="alert alert-danger list-unstyled")
          #muestra diccionario de errores
          print(biblioteca_form.errors["nombre"].as_text)
          

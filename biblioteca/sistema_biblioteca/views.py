@@ -138,7 +138,7 @@ def libros(request, año = 2022):
    return render(request,'sistema_biblioteca/libros.html', context)
 
 
-def autores(request, año=2022):
+def biblioteca(request, año=2022):
    biblioteca_form = bibliotecaform()
    if request.method == 'POST':
       biblioteca_form = bibliotecaform(request.POST)
@@ -152,9 +152,6 @@ def autores(request, año=2022):
          return HttpResponseRedirect(request.path_info)
       else:
          messages.error(request, 'Por favor revise los campos a completar', extra_tags="alert alert-danger list-unstyled")
-         #muestra diccionario de errores
-         print(biblioteca_form.errors["nombre"].as_text)
-         
 
    else:
       biblioteca_form = bibliotecaform()
@@ -164,7 +161,7 @@ def autores(request, año=2022):
       'año_ingreso': año,
    } 
    #context = { 'form' : biblioteca_form}
-   return render(request, 'sistema_biblioteca/autores.html', context)
+   return render(request, 'sistema_biblioteca/biblioteca.html', context)
 
    
    # catalogo = [
@@ -232,8 +229,6 @@ def contacto(request):
          return HttpResponseRedirect(request.path_info)
       else:
          messages.error(request, 'Por favor revise los campos a completar', extra_tags="alert alert-danger list-unstyled")
-         #muestra diccionario de errores
-         print(contacto_form.errors["nombre"].as_text)
 
    else:
       contacto_form = contactoForm()

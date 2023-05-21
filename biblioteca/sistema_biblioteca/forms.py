@@ -75,17 +75,17 @@ class bibliotecaform(forms.Form):
     )
     
     autor = forms.CharField(
-       min_length= 3,
-       label='Nombre del Autor',
-       widget= forms.TextInput(),
-       required=True 
+        min_length= 3,
+        label='Nombre del Autor',
+        widget= forms.TextInput(),
+        required=True 
     )
 
     genero = forms.CharField(
-       min_length= 3,
-       label='Genero',
-       widget= forms.TextInput(),
-       required=True 
+        min_length= 3,
+        label='Genero',
+        widget= forms.TextInput(),
+        required=True 
     )
 
     def clean(self) -> Dict[str, Any]:

@@ -1,6 +1,5 @@
 from django import forms
-from typing import Any, Dict
-
+from typing import Any, Dict 
 DESTINO_CHOICES = (
     ("informacion_personal", "Información general"),
     ("recomendacion_libro", "Recomendación de libro"),
@@ -52,7 +51,7 @@ class contactoForm(forms.Form):
             if i.isnumeric():
                 n=True
         if n==True:
-            self.add_error('nombre','El nombre no puede contener números')
+            self.add_error('nombre','El nombre no puede contener números') 
         a=False
         for i in asunto:
             if i.isnumeric():
@@ -60,4 +59,47 @@ class contactoForm(forms.Form):
         if a==True:
             self.add_error('asunto', 'El asunto no puede contener números')
             
+        return self.cleaned_data
+    
+
+    
+    
+
+class bibliotecaform(forms.Form):
+    
+    titulo = forms.CharField(
+        min_length= 3,
+        label='Titulo',
+        widget= forms.TextInput(),
+        required=True
+    )
+    
+    autor = forms.CharField(
+       min_length= 3,
+       label='Nombre del Autor',
+       widget= forms.TextInput(),
+       required=True 
+    )
+
+    genero = forms.CharField(
+       min_length= 3,
+       label='Genero',
+       widget= forms.TextInput(),
+       required=True 
+    )
+
+    def clean(self) -> Dict[str, Any]:
+        
+        super(bibliotecaform, self).clean()
+        genero = self.cleaned_data.get('genero')
+        
+        
+        n=False
+        for i in genero:
+            if i.isnumeric():
+                n=True
+        if n==True:
+            self.add_error('genero','El genero no puede contener numeros')
+
+
         return self.cleaned_data

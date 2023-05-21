@@ -1,0 +1,13 @@
+.container {
+    flex: content;
+    background-color: #8eb616;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 10px;
+}
+
+.div-cont {
+    
+    background-color: #b5e991;
+}
+

@@ -55,8 +55,8 @@ class contactoForm(forms.Form):
             self.add_error('nombre','El nombre no puede contener números')
         a=False
         for i in asunto:
-             if i.isnumeric():
-                 a=True
+            if i.isnumeric():
+                a=True
         if a==True:
             self.add_error('asunto', 'El asunto no puede contener números')
             

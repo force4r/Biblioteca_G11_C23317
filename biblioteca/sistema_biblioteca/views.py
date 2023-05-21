@@ -188,11 +188,11 @@ def contacto(request):
          contacto_form.cleaned_data['destino']
          contacto_form.cleaned_data['mensaje']
 
-         messages.success(request, '¡Gracias por contactarnos! Te estaremos respondiendo a la brevedad', extra_tags="alert alert-success")
+         messages.success(request, '¡Gracias por contactarnos! Te estaremos respondiendo a la brevedad', extra_tags="alert alert-success list-unstyled")
          return HttpResponseRedirect(request.path_info)
       else:
-         messages.error(request, 'Por favor revise los campos a completar', extra_tags="alert alert-danger")
-        
+         messages.error(request, 'Por favor revise los campos a completar', extra_tags="alert alert-danger list-unstyled")
+      
    else:
       contacto_form = contactoForm()
 

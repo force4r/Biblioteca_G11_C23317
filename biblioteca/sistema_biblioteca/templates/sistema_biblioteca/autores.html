@@ -31,17 +31,31 @@
         </div>
     </div>
 </div>
-<div>
-    <form action="" method="POST">
-
-        {%csrf_token%}
-    
-        {{form}}
-    
-        <input type="submit">
-    
-    
-    </form>
+<div class="container">
+    <div class="div-cont">
+        <form action="" method="POST">
+            {%csrf_token%}
+        <div class="div-cont2">
+            {{form.titulo.label_tag}}
+            <div class="div-cont3">
+                {{form.titulo}}
+            </div>
+        </div>
+        <div class="div-cont2"> 
+            {{form.autor.label_tag}}
+            <div class="div-cont3">
+                {{form.autor}}
+            </div>
+        </div>
+        <div class="div-cont2">
+            {{form.genero.label_tag}}
+            <div class="div-cont3">
+                {{form.genero}}
+            </div>
+        </div>
+            <input type="submit">
+        </form>
+    </div>
 </div>
 
 {% endblock %}

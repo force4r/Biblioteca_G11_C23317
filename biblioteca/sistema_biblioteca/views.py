@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect 
 from .forms import contactoForm 
 from django.contrib import messages
-from .models import Libro, Idioma, Editorial
+from .models import Libro
 from .forms import bibliotecaform
 
 # Create your views here.

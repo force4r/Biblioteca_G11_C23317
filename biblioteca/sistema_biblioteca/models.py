@@ -23,8 +23,8 @@ class Genero(models.Model):
 class Editorial(models.Model):
     editorial = models.CharField(max_length=20, verbose_name="Editorial")
 
-class Idioma(models.Model):
-    idioma = models.CharField(max_length=20, verbose_name="Idioma")
+# class Idioma(models.Model):
+#     idioma = models.CharField(max_length=20, verbose_name="Idioma")
 class Libro(models.Model):
     titulo = models.CharField(max_length=100, verbose_name="Título")
     genero = models.ForeignKey(Genero, on_delete=models.CASCADE, default=0) #muchos a uno
@@ -34,7 +34,7 @@ class Libro(models.Model):
     año_edicion = models.IntegerField(verbose_name="Año de edición")
     descripcion = models.CharField(max_length= 3000, verbose_name="Descripcion", default="Descripcion")
     editoriales = models.ManyToManyField(Editorial)
-    idiomas = models.ManyToManyField(Idioma)
+    #idiomas = models.ManyToManyField(Idioma)
 
 
 

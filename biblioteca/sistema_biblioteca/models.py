@@ -1,13 +1,19 @@
 from django.db import models
 
-# Create your models here.
 class Persona(models.Model):
     nombre = models.CharField(max_length=50, verbose_name="Nombre")
     apellido = models.CharField(max_length=80, verbose_name="Apellido")
+    dni = models.IntegerField(verbose_name="Dni", default=0000000)
     class Meta:
         abstract =True
-class Usuario(Persona):
-    mail=models.EmailField(max_length=128, verbose_name="Email")
+
+class Lector(Persona):
+    mail = models.EmailField(max_length=128, verbose_name="Email")
+
+class Bibliotecario(Persona):
+    legajo = models.IntegerField(verbose_name="Legajo")
+    fecha_inicio = models.DateField(verbose_name="Fecha de inicio")
+
 class Autor(Persona):
     nacionalidad = models.CharField(max_length=15, verbose_name="Nacionalidad", default="nacionalidad")
     

@@ -22,7 +22,7 @@ class Libro(models.Model):
     titulo = models.CharField(max_length=100, verbose_name="Título")
     genero = models.ForeignKey(Genero, on_delete=models.CASCADE, default=0) #muchos a uno
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE, default=0) #muchos a unopy
-    isbn = models.BigIntegerField(verbose_name="ISBN") #son 13 digitos
+    isbn = models.CharField(verbose_name="ISBN") #son 13 digitos
     año_ingreso = models.IntegerField(verbose_name="Año de ingreso")
     año_edicion = models.IntegerField(verbose_name="Año de edición")
     descripcion = models.CharField(max_length= 3000, verbose_name="Descripcion", default="Descripcion")

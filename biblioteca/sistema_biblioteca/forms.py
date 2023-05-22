@@ -68,7 +68,7 @@ class contactoForm(forms.Form):
 class bibliotecaform(forms.Form):
     
     titulo = forms.CharField(
-        min_length= 3,
+        
         label='Titulo',
         widget= forms.TextInput(),
         required=True
@@ -88,18 +88,46 @@ class bibliotecaform(forms.Form):
         required=True 
     )
 
-    def clean(self) -> Dict[str, Any]:
-        
-        super(bibliotecaform, self).clean()
-        genero = self.cleaned_data.get('genero')
-        
-        
-        n=False
-        for i in genero:
-            if i.isnumeric():
-                n=True
-        if n==True:
-            self.add_error('genero','El genero no puede contener numeros')
+    isbn = forms.CharField(
+        min_length= 3,
+        label='ISBN',
+        widget= forms.TextInput(),
+        required=True 
+    )
 
+    año_edicion = forms.IntegerField(
+        
+        label='Año de edicion',
+        widget= forms.NumberInput(),
+        required=True 
+    )
 
-        return self.cleaned_data
+    descripcion = forms.CharField(
+        min_length= 3,
+        label='Descripcion',
+        widget= forms.TextInput(),
+        required=True 
+    )
+
+    editoriales = forms.CharField(
+        min_length= 3,
+        label='Editoriales',
+        widget= forms.TextInput(),
+        required=True 
+    )
+
+    idiomas = forms.CharField(
+        min_length= 3,
+        label='Idiomas',
+        widget= forms.TextInput(),
+        required=True 
+    )
+
+    
+        
+
+    
+        
+        
+        
+        

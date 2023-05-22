@@ -1,5 +1,4 @@
 from django import forms
-
 from typing import Any, Dict 
 from .models import Libro, Autor, Editorial, Genero
 DESTINO_CHOICES = (
@@ -101,12 +100,12 @@ class bibliotecaform(forms.Form):
         required=True 
     )
 
-    isbn = forms.CharField(
-        min_length= 3,
-        label='ISBN',
-        widget= forms.CharField( widget=forms.TextInput(attrs={'type':'number'})),
-        required=True 
-    )
+    # isbn = forms.CharField(
+    #     min_length= 3,
+    #     label='ISBN',
+    #     widget= forms.CharField( widget=forms.TextInput(attrs={'type':'number'})),
+    #     required=True 
+    # )
 
     año_edicion = forms.IntegerField(
         

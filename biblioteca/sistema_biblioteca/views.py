@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect 
-from .forms import contactoForm 
+from .forms import contactoForm, bibliotecaform, AltaLibro
 from django.contrib import messages
 from .models import Libro, Autor
 from .forms import bibliotecaform, AltaLibro

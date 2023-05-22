@@ -8,36 +8,26 @@
 {% block contenido %}
 
 <section>
-<br>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <h3>
-                Cátalogo según fecha de ingreso a la biblioteca
-            </h3>
-        </div>
-    </div>
-</div>
-<br>
-<div class="container-fluid">
-    <div class="row">
+<div class="container">
+    <h2 class="mt-3">Cátalogo según fecha de ingreso a la biblioteca</h2>
+    <div class="row my-4">
         <div class="col-md-12">
             <div class="btn-group btn-group-lg" role="group">
 
                 <button class="btn btn-light" type="button">
-                    <a href="{% url 'catalogo' %}">Catálogo completo</a>
+                    <a class="link-secondary" href="{% url 'catalogo' %}">Catálogo completo</a>
                 </button>
                 <button class="btn btn-light" type="button">
-                    <a href="{% url 'catalogo' 2015 %}">2015</a>
+                    <a class="link-secondary" href="{% url 'catalogo' 2015 %}">2015</a>
                 </button>
                 <button class="btn btn-light" type="button">
-                    <a href="{% url 'catalogo' 2016 %}">2016</a>
+                    <a class="link-secondary" href="{% url 'catalogo' 2016 %}">2016</a>
                 </button>
                 <button class="btn btn-light" type="button">
-                    <a href="{% url 'catalogo' 2018 %}">2018</a>
+                    <a class="link-secondary" href="{% url 'catalogo' 2018 %}">2018</a>
                 </button>
                 <button class="btn btn-light" type="button">
-                    <a href="{% url 'catalogo' 2022 %}">2022</a>
+                    <a class="link-secondary" href="{% url 'catalogo' 2022 %}">2022</a>
                 </button>
             </div>
         </div>
@@ -47,8 +37,8 @@
 {% for libro in libro %}
 {% if año_ingreso == 0 or año_ingreso == libro.año_ingreso %}
 <article style="margin-left: 20px;">
-    <div class="container-fluid">
-        <div class="row">
+    <div class="container">
+        <div class="row my-4">
             <div class="col-md-12">
                 <div class="card">
                     <h5 class="card-header">

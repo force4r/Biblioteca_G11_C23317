@@ -59,10 +59,7 @@
                             {% endfor %}<br>
                             Año de ingreso: {{libro.año_ingreso}}<br>
                             Año de edición: {{libro.año_edicion}}<br>
-                            Idioma:
-                            {% for idioma in libro.idiomas.all %}
-                                        {{idioma.idioma}}
-                            {% endfor %}
+                            Idioma: {{libro.idioma}}
                             
 
                         </p>

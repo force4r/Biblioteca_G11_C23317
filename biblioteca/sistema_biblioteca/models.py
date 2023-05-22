@@ -3,16 +3,17 @@ from django.db import models
 class Persona(models.Model):
     nombre = models.CharField(max_length=50, verbose_name="Nombre")
     apellido = models.CharField(max_length=80, verbose_name="Apellido")
-    dni = models.IntegerField(verbose_name="Dni", default=0000000)
     class Meta:
         abstract =True
 
 class Lector(Persona):
     mail = models.EmailField(max_length=128, verbose_name="Email")
+    dni = models.IntegerField(verbose_name="Dni", default=0000000)
 
 class Bibliotecario(Persona):
     legajo = models.IntegerField(verbose_name="Legajo")
     fecha_inicio = models.DateField(verbose_name="Fecha de inicio")
+    dni = models.IntegerField(verbose_name="Dni", default=0000000)
 
 class Autor(Persona):
     nacionalidad = models.CharField(max_length=15, verbose_name="Nacionalidad", default="nacionalidad")

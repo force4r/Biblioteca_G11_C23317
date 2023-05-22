@@ -6,6 +6,16 @@
 {% block contenido %}
 <div class="container-fluid my-3">
     <h2>Gestión de Libros</h2>
+    
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            
+        
+      
+            <input type="submit">
+        </form>
+
     <div class="row">
         <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 py-4">
             <form>

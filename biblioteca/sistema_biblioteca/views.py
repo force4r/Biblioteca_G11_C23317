@@ -1,10 +1,10 @@
-from django.shortcuts import render 
+from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect 
 from .forms import contactoForm 
 from django.contrib import messages
-from .models import Libro
-from .forms import bibliotecaform
+from .models import Libro, Autor
+from .forms import bibliotecaform, AltaLibro
 
 # Create your views here.
 
@@ -84,12 +84,26 @@ def catalogo(request, año=0):
 
 def libros(request, año = 2022):
    print(request.method)
+   l = Libro.objects.all()
    
-   catalogo = Libro.objects.all()
+
+   if request.method == "POST":
+        form = AltaLibro(request.POST)
+
+        if form.is_valid():
+            # Guarde la instancia nueva
+            form.save()
+
+            # redirija
+            messages.add_message(request, messages.SUCCESS, 'Libro dado de alta con éxito')
+            return redirect("catalogo")
+
+   else:
+      form = AltaLibro()
    context = {
-      'cat_lista': catalogo,
-      'año_ingreso': año,
-   }       
+      'form': form,
+      'libro': l
+   }
    return render(request,'sistema_biblioteca/libros.html', context)
 
 

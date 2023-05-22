@@ -1,10 +1,13 @@
 from django import forms
+
 from typing import Any, Dict 
+from .models import Libro, Autor, Editorial, Genero
 DESTINO_CHOICES = (
     ("informacion_personal", "Información general"),
     ("recomendacion_libro", "Recomendación de libro"),
     ("prestamos", "Prestamos"),
 )
+
 
 class contactoForm(forms.Form):
 
@@ -123,6 +126,33 @@ class bibliotecaform(forms.Form):
         required=True 
     )
 
+class AltaLibro(forms.ModelForm):
+   
+    class Meta:
+        model = Libro
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs ):
+        super(AltaLibro, self).__init__(*args, **kwargs)
+        # sin la siguiente línea label_from_instance NO funciona
+        self.fields['editoriales'].queryset = Editorial.objects.all()
+        self.fields['editoriales'].label_from_instance = lambda obj: "%s" % (obj.editorial)
+        self.fields['autor'].queryset = Autor.objects.all()
+        self.fields['autor'].label_from_instance = lambda obj: "%s %s" % (obj.nombre, obj.apellido)
+        self.fields['genero'].queryset = Genero.objects.all()
+        self.fields['genero'].label_from_instance = lambda obj: "%s" % (obj.genero)
+    
+
+    
+    # autor = forms.ModelChoiceField(
+    #    queryset=Autor.objects.values_list()
+    # )
+    # genero = forms.ModelChoiceField(
+    #    queryset=Genero.objects.values()
+    # )
+    # editoriales = forms.MultipleChoiceField(
+    #     choices=Editorial.objects.values_list()
+    # )
     
         
 

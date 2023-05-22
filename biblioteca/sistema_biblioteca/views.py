@@ -110,24 +110,25 @@ def libros(request, año = 2022):
 def biblioteca(request, año=2022):
    if request.method == 'POST':
       biblioteca_form = bibliotecaform(request.POST)
+      #EditorialForm = EditorialForm(request.POST)
 
       if biblioteca_form.is_valid():
          titulo = biblioteca_form.cleaned_data['titulo']
-         autor = biblioteca_form.cleaned_data['autor']
          genero = biblioteca_form.cleaned_data['genero']
+         autor = biblioteca_form.cleaned_data['autor']  
          isbn = biblioteca_form.cleaned_data['isbn']
          año_edicion = biblioteca_form.cleaned_data['año_edicion']
          descripcion = biblioteca_form.cleaned_data['descripcion']
+         editoriales = biblioteca_form.cleaned_data['editoriales']
          idiomas = biblioteca_form.cleaned_data['idiomas']
-         editoriales = biblioteca_form.cleaned_data['editorial']
+         
    
 
          biblioteca = Libro(
             titulo = titulo,
             genero = genero,
             autor = autor,
-            isbn = isbn,
-            
+            isbn = isbn,    
             año_edicion = año_edicion,
             descripcion = descripcion,
             idiomas = idiomas,

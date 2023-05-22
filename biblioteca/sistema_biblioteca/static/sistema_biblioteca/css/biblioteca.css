@@ -1,1 +1,27 @@
+.container{
+    display: grid;
+    gap: 1.25rem;
+    background-color: #548A33;
+    border-color: black;
+    border-radius: 10px;
+    padding: 20px;
+}
 
+.row-my-4{
+    margin: 10px;
+    padding: 10px;
+    
+background-color: aliceblue;
+}
+
+.col-md-12{
+    
+    background-color: azure;
+}
+
+.mb-3{
+    padding: 10px;
+    display: inline-flex;
+    background-color:#24A6BD;
+    border-radius: 10px;
+}

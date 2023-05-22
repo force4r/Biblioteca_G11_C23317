@@ -65,6 +65,16 @@ class contactoForm(forms.Form):
         return self.cleaned_data
     
 
+
+    """ class EditorialForm(forms.Form):
+        editorial = forms.CharField(
+
+        max_length=100,
+        widget=forms.Select(choices=TITLE_CHOICES),
+    ) """
+    
+    
+
     
     
 
@@ -94,14 +104,14 @@ class bibliotecaform(forms.Form):
     isbn = forms.CharField(
         min_length= 3,
         label='ISBN',
-        widget= forms.TextInput(),
+        widget= forms.CharField( widget=forms.TextInput(attrs={'type':'number'})),
         required=True 
     )
 
     año_edicion = forms.IntegerField(
         
         label='Año de edicion',
-        widget= forms.NumberInput(),
+        widget= forms.DateTimeInput(),
         required=True 
     )
 

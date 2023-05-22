@@ -34,7 +34,7 @@ class Libro(models.Model):
     año_edicion = models.IntegerField(verbose_name="Año de edición")
     descripcion = models.CharField(max_length= 3000, verbose_name="Descripcion", default="Descripcion")
     editoriales = models.ManyToManyField(Editorial)
-    #idiomas = models.ManyToManyField(Idioma)
+    idiomas = models.CharField(verbose_name="Idioma", max_length=20, default="Idioma")
 
 
 

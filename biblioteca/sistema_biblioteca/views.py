@@ -140,16 +140,15 @@ def libros(request, año = 2022):
 
 
 def biblioteca(request, año=2022):
-   biblioteca_form = bibliotecaform()
    if request.method == 'POST':
       biblioteca_form = bibliotecaform(request.POST)
 
       if biblioteca_form.is_valid():
-         bibliotecaform.cleaned_data['titulo']
-         bibliotecaform.cleaned_data['autor']
-         bibliotecaform.cleaned_data['genero']
+         biblioteca_form.cleaned_data['titulo']
+         biblioteca_form.cleaned_data['autor']
+         biblioteca_form.cleaned_data['genero']
 
-         messages.success(request, 'La informacion ha sido cargada', extra_tags="alert alert-danger list-unstyled")
+         messages.success(request, 'La informacion ha sido cargada', extra_tags="alert alert-success list-unstyled")
          return HttpResponseRedirect(request.path_info)
       else:
          messages.error(request, 'Por favor revise los campos a completar', extra_tags="alert alert-danger list-unstyled")

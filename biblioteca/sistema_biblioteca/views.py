@@ -79,6 +79,21 @@ def contacto(request):
 
    return render(request, 'sistema_biblioteca/contacto.html', context)
 
+
+def login(request):
+   context={}
+
+   return render(request, 'sistema_biblioteca/login.html', context)
+
+
+
+
+
+
+
+
+
+
 # def biblioteca(request, año=2022):
 #    if request.method == 'POST':
 #       biblioteca_form = bibliotecaform(request.POST)

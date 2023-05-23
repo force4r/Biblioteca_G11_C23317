@@ -23,12 +23,10 @@ class Genero(models.Model):
 class Editorial(models.Model):
     editorial = models.CharField(max_length=20, verbose_name="Editorial")
 
-# class Idioma(models.Model):
-#     idioma = models.CharField(max_length=20, verbose_name="Idioma")
 class Libro(models.Model):
     titulo = models.CharField(max_length=100, verbose_name="Título")
     genero = models.ForeignKey(Genero, on_delete=models.CASCADE, default=0) #muchos a uno
-    autor = models.ForeignKey(Autor, on_delete=models.CASCADE, default=0) #muchos a unopy
+    autor = models.ForeignKey(Autor, on_delete=models.CASCADE, default=0) #muchos a uno
     isbn = models.CharField(verbose_name="ISBN") #son 13 digitos
     año_ingreso = models.IntegerField(verbose_name="Año de ingreso")
     año_edicion = models.IntegerField(verbose_name="Año de edición")

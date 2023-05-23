@@ -65,61 +65,63 @@ class contactoForm(forms.Form):
     
 
 
-""""
-class bibliotecaform(forms.Form):
+"""
+class AltaLibro(forms.Form):
     
     titulo = forms.CharField(
         
         label='Titulo',
-        widget= forms.TextInput(),
+        widget= forms.TextInput(attrs={'class':'form-control'}),
         required=True
     )
-    
-    autor = forms.CharField(
-        min_length= 3,
-        label='Nombre del Autor',
-        widget= forms.TextInput(),
+
+    genero = forms.ModelChoiceField(
+        queryset= Genero.objects.values_list("genero", flat=True),
+        label='Genero',
+        widget= forms.Select(attrs={'class':'form-select'}),
         required=True 
     )
 
-    genero = forms.CharField(
-        min_length= 3,
-        label='Genero',
-        widget= forms.TextInput(),
+    autor = forms.ModelChoiceField(
+        queryset=Autor.objects.values_list(),
+        label='Nombre del Autor',
+        widget= forms.Select(attrs={'class':'form-select'}),
         required=True 
     )
 
     isbn = forms.CharField(
-        min_length= 13,
         label='ISBN',
-        widget= forms.CharField(),
+        widget= forms.TextInput(attrs={'class':'form-control'}),
         required=True 
+    )
+
+    año_ingreso = forms.IntegerField(
+    label='Año de ingreso',
+    widget= forms.TextInput(attrs={'class':'form-control'}),
+    required=True 
     )
 
     año_edicion = forms.IntegerField(
         label='Año de edicion',
-        widget= forms.DateTimeInput(),
+        widget= forms.TextInput(attrs={'class':'form-control'}),
         required=True 
     )
 
     descripcion = forms.CharField(
-        min_length= 3,
-        label='Descripcion',
-        widget= forms.TextInput(),
+        label='Descripción',
+        widget= forms.Textarea(attrs={'class':'form-control'}),
         required=True 
     )
 
-    editoriales = forms.CharField(
-        min_length= 3,
+    editoriales = forms.ChoiceField(
         label='Editoriales',
-        widget= forms.TextInput(),
+        widget= forms.Select(attrs={'class':'form-select'}),
         required=True 
     )
 
     idiomas = forms.CharField(
-        min_length= 3,
-        label='Idiomas',
-        widget= forms.TextInput(),
+        label='Idioma',
+        widget= forms.TextInput(attrs={'class':'form-control'}),
         required=True 
     )
 """
@@ -132,7 +134,7 @@ class AltaLibro(forms.ModelForm):
             "titulo": forms.TextInput(attrs={'class':'form-control'}),
             "isbn": forms.TextInput(attrs={'class':'form-control'}),
             "idioma": forms.TextInput(attrs={'class':'form-control'}),
-            "descripcion": forms.Textarea(attrs={'class':'form-control'}),
+            "descripcion": forms.Textarea(attrs={'class':'form-control', 'placeholder':'Resumen del libro'}),
             "genero": forms.Select(attrs={'class':'form-select'}),
             "autor": forms.Select(attrs={'class':'form-select'}),
             "editoriales": forms.Select(attrs={'class':'form-select'}),
@@ -151,13 +153,3 @@ class AltaLibro(forms.ModelForm):
         self.fields['genero'].label_from_instance = lambda obj: "%s" % (obj.genero)
     
 
-    
-    # autor = forms.ModelChoiceField(
-    #    queryset=Autor.objects.values_list()
-    # )
-    # genero = forms.ModelChoiceField(
-    #    queryset=Genero.objects.values()
-    # )
-    # editoriales = forms.MultipleChoiceField(
-    #     choices=Editorial.objects.values_list()
-    # )

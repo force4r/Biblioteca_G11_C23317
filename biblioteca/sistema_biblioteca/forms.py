@@ -28,7 +28,7 @@ class contactoForm(forms.Form):
     destino = forms.ChoiceField(
         choices=DESTINO_CHOICES,
         label='Destino',
-        widget= forms.Select(),
+        widget= forms.Select(attrs={'class':'form-select'}),
         required=True
     )
 
@@ -65,18 +65,7 @@ class contactoForm(forms.Form):
     
 
 
-    """ class EditorialForm(forms.Form):
-        editorial = forms.CharField(
-
-        max_length=100,
-        widget=forms.Select(choices=TITLE_CHOICES),
-    ) """
-    
-    
-
-    
-    
-
+""""
 class bibliotecaform(forms.Form):
     
     titulo = forms.CharField(
@@ -100,15 +89,14 @@ class bibliotecaform(forms.Form):
         required=True 
     )
 
-    # isbn = forms.CharField(
-    #     min_length= 3,
-    #     label='ISBN',
-    #     widget= forms.CharField( widget=forms.TextInput(attrs={'type':'number'})),
-    #     required=True 
-    # )
+    isbn = forms.CharField(
+        min_length= 13,
+        label='ISBN',
+        widget= forms.CharField(),
+        required=True 
+    )
 
     año_edicion = forms.IntegerField(
-        
         label='Año de edicion',
         widget= forms.DateTimeInput(),
         required=True 
@@ -134,12 +122,23 @@ class bibliotecaform(forms.Form):
         widget= forms.TextInput(),
         required=True 
     )
-
+"""
 class AltaLibro(forms.ModelForm):
-   
+
     class Meta:
         model = Libro
         fields = '__all__'
+        widgets = {
+            "titulo": forms.TextInput(attrs={'class':'form-control'}),
+            "isbn": forms.TextInput(attrs={'class':'form-control'}),
+            "idioma": forms.TextInput(attrs={'class':'form-control'}),
+            "descripcion": forms.Textarea(attrs={'class':'form-control'}),
+            "genero": forms.Select(attrs={'class':'form-select'}),
+            "autor": forms.Select(attrs={'class':'form-select'}),
+            "editoriales": forms.Select(attrs={'class':'form-select'}),
+            "año_ingreso": forms.TextInput(attrs={'class':'form-control'}),
+            "año_edicion": forms.TextInput(attrs={'class':'form-control'}),
+        }
 
     def __init__(self, *args, **kwargs ):
         super(AltaLibro, self).__init__(*args, **kwargs)
@@ -162,11 +161,3 @@ class AltaLibro(forms.ModelForm):
     # editoriales = forms.MultipleChoiceField(
     #     choices=Editorial.objects.values_list()
     # )
-    
-        
-
-    
-        
-        
-        
-        

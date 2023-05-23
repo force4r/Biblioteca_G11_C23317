@@ -32,7 +32,7 @@ class Libro(models.Model):
     isbn = models.CharField(verbose_name="ISBN") #son 13 digitos
     año_ingreso = models.IntegerField(verbose_name="Año de ingreso")
     año_edicion = models.IntegerField(verbose_name="Año de edición")
-    descripcion = models.CharField(max_length= 3000, verbose_name="Descripcion", default="Resumen del libro")
+    descripcion = models.TextField(max_length= 3000, verbose_name="Descripcion", default="Resumen del libro")
     editoriales = models.ManyToManyField(Editorial)
     idioma = models.CharField(verbose_name="Idioma", max_length=20, default="Idioma del libro")
 

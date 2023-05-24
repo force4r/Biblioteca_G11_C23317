@@ -137,7 +137,7 @@ class AltaLibro(forms.ModelForm):
             "descripcion": forms.Textarea(attrs={'class':'form-control', 'placeholder':'Resumen del libro'}),
             "genero": forms.Select(attrs={'class':'form-select'}),
             "autor": forms.Select(attrs={'class':'form-select'}),
-            "editoriales": forms.Select(attrs={'class':'form-select'}),
+            "editoriales": forms.SelectMultiple(attrs={'class':'form-select'}),
             "año_ingreso": forms.TextInput(attrs={'class':'form-control'}),
             "año_edicion": forms.TextInput(attrs={'class':'form-control'}),
         }

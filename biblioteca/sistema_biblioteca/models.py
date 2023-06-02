@@ -8,6 +8,9 @@ class Persona(models.Model):
     apellido = models.CharField(max_length=80, verbose_name="Apellido")
     class Meta:
         abstract =True
+    
+    def __str__(self):
+        return f"{self.apellido} {self.nombre}"
 
 class Lector(Persona):
     mail = models.EmailField(max_length=128, verbose_name="Email")
@@ -21,10 +24,21 @@ class Bibliotecario(Persona):
 class Autor(Persona):
     nacionalidad = models.CharField(max_length=15, verbose_name="Nacionalidad")
     
+    def __str__(self):
+        return super().__str__() + f" {self.nacionalidad}"
+
+
 class Genero(models.Model):
     genero = models.CharField(max_length=20, verbose_name="Género", default="Género")
+
+    def __str__(self) -> str:
+        return f"{self.genero}"
+
 class Editorial(models.Model):
     editorial = models.CharField(max_length=20, verbose_name="Editorial")
+
+    def __str__(self) -> str:
+        return f"{self.editorial}"
 
 class Libro(models.Model):
     titulo = models.CharField(max_length=100, verbose_name="Título")
@@ -36,6 +50,9 @@ class Libro(models.Model):
     descripcion = models.TextField(max_length= 3000, verbose_name="Descripcion")
     editoriales = models.ManyToManyField(Editorial)
     idioma = models.CharField(verbose_name="Idioma", max_length=20)
+
+    def __str__(self) -> str:
+        return f"{self.titulo} - {self.autor} - {self.isbn} - {self.año_ingreso} - {self.idioma} "
 
 
 

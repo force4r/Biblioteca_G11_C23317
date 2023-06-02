@@ -9,5 +9,4 @@ urlpatterns = [
     path('biblioteca/',views.biblioteca, name='biblioteca'),
     path('alta_autor/', views.alta_autor, name="alta_autor"),
     path('contacto/', views.contacto, name="contacto"),
-    path('login/', views.login, name="login"),
 ]

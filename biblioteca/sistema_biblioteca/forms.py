@@ -153,3 +153,17 @@ class AltaLibro(forms.ModelForm):
         self.fields['genero'].label_from_instance = lambda obj: "%s" % (obj.genero)
     
 
+class AltaAutor(forms.ModelForm):
+    
+    class Meta:
+        model = Autor
+        fields = '__all__'
+        widgets = {
+            "nombre":forms.TextInput(attrs={'size':'70'}),
+            "apellido":forms.TextInput(attrs={'size':'70'}),
+            "nacionalidad":forms.TextInput(attrs={'size':'70'}),                  
+        }
+        def __init__(self, *args, **kwargs ):
+         super(AltaAutor, self).__init__(*args, **kwargs)
+
+

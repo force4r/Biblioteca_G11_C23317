@@ -1,0 +1,35 @@
+{% extends 'sistema_biblioteca/base.html' %}
+{% load static %}
+{%block extra_css %} <link rel="stylesheet" href="{% static 'sistema_biblioteca/css/alta_autor.css' %}"> {% endblock %}
+{% block titulo %}Alta de autor{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <h2 class="mt-3">Gestion de autores</h2>
+            <div class="col-md-12">
+                <form action="" method="POST" class="form">
+                    {% csrf_token %}
+                    <div class="mb-2">
+                        {{form.nombre.errors}}
+                        {{form.nombre.label_tag}}
+                        <div>{{form.nombre}}</div>
+                    </div>
+                    <div class="mb-2">
+                        {{form.apellido.errors}}
+                        {{form.apellido.label_tag}}
+                        <div>{{ form.apellido}}</div>
+                    </div>
+                    <div class="mb-2">
+                        {{form.nacionalidad.errors}}
+                        {{form.nacionalidad.label_tag}}
+                        <div>{{form.nacionalidad}}</div>
+                    </div>
+                    <button type="submit" class="btn btn-secondary mt-2">Alta</button>
+                </form>
+            </div>
+        </div>
+</div>
+
+
+
+{% endblock %}

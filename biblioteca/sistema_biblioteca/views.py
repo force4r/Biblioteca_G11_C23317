@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseNotFound, HttpResponseRedirect 
-from .forms import contactoForm, AltaLibro
+from .forms import contactoForm, AltaLibro, AltaAutor
 from django.contrib import messages
-from .models import Libro
+from .models import Libro, Autor
 
 # Create your views here.
 
@@ -84,6 +84,29 @@ def login(request):
    context={}
 
    return render(request, 'sistema_biblioteca/login.html', context)
+
+
+def alta_autor(request):
+
+   a = Autor.objects.all()
+
+   if request.method == "POST":
+      form = AltaAutor(request.POST)
+      if form.is_valid():
+         form.save()
+         messages.add_message(request, messages.SUCCESS, 'Autor dado de alta con éxito', extra_tags="alert alert-success list-unstyled")
+
+      else:
+         messages.error(request, 'Por favor revise los campos a completar', extra_tags="alert alert-danger list-unstyled")   
+         return redirect("alta_autor")
+      
+   else:
+      form = AltaAutor()
+   context = {
+      'form': form,
+      'autor' : a
+      }
+   return render(request, 'sistema_biblioteca/alta_autor.html', context)
 
 
 

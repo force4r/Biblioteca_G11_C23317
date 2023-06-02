@@ -1,5 +1,8 @@
 from django.db import models
 
+
+
+
 class Persona(models.Model):
     nombre = models.CharField(max_length=50, verbose_name="Nombre")
     apellido = models.CharField(max_length=80, verbose_name="Apellido")
@@ -16,7 +19,7 @@ class Bibliotecario(Persona):
     dni = models.IntegerField(verbose_name="Dni", default=0000000)
 
 class Autor(Persona):
-    nacionalidad = models.CharField(max_length=15, verbose_name="Nacionalidad", default="nacionalidad")
+    nacionalidad = models.CharField(max_length=15, verbose_name="Nacionalidad")
     
 class Genero(models.Model):
     genero = models.CharField(max_length=20, verbose_name="Género", default="Género")

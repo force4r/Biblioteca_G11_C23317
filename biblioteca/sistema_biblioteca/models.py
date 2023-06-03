@@ -53,6 +53,14 @@ class Libro(models.Model):
 
     def __str__(self) -> str:
         return f"{self.titulo} - {self.autor} - {self.isbn} - {self.año_ingreso} - {self.idioma} "
+    
+class Prestamo_Libro(models.Model):
+    libro = models.ForeignKey(Libro, on_delete=models.CASCADE, verbose_name="Libro")
+    fecha_prestamo_inicio = models.DateField(verbose_name="Inicio del prestamo")
+    fecha_prestamo_fin = models.DateField(verbose_name="Fin del prestamo")
+    lector = models.OneToOneField(Lector, on_delete=models.CASCADE, primary_key=True, verbose_name="Usuario asociado al préstamo")
+
+
 
 
 

@@ -24,8 +24,6 @@ def catalogo(request, año=0):
    context = {
       'libro': libro,
       'año_ingreso': año,
-      # 'idioma': idioma,
-      # 'editorial': editorial,
    }
    return render(request, 'sistema_biblioteca/catalogo.html', context)
 

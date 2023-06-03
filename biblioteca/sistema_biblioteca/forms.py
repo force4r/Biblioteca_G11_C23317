@@ -130,6 +130,7 @@ class AltaLibro(forms.ModelForm):
     class Meta:
         model = Libro
         fields = '__all__'
+        exclude = ["año_ingreso"]
         widgets = {
             "titulo": forms.TextInput(attrs={'class':'form-control'}),
             "isbn": forms.TextInput(attrs={'class':'form-control'}),

@@ -6,58 +6,61 @@
 {% block contenido %}
 <div class="container">
     <h2 class="mt-3">Gestión de Libros</h2>
-        <div class="row my-4">
-            <div class="col-md-12">
-                <form action="" method="POST" class="form">
-                    {% csrf_token %}
-                    <div class="mb-2">
-                        {{form.titulo.errors}}
-                        {{form.titulo.label_tag}}
-                        <div>{{form.titulo}}</div>
-                    </div>
-                    <div class="mb-2">
-                        {{form.genero.errors}}
-                        {{form.genero.label_tag}}
-                        <div>{{form.genero}}</div>
-                    </div>
-                    <div class="mb-2">
-                        {{form.autor.errors}}
-                        {{form.autor.label_tag}}
-                        <div>{{form.autor}}</div>
-                    </div>
-                    <div class="mb-2">
-                        {{form.isbn.errors}}
-                        {{form.isbn.label_tag}}
-                        <div>{{form.isbn}}</div>
-                    </div>
-                    <div class="mb-2">
-                        {{form.año_ingreso.errors}}
-                        {{form.año_ingreso.label_tag}}
-                        <div>{{form.año_ingreso}}</div>
-                    </div>
-                    <div class="mb-2">
-                        {{form.año_edicion.errors}}
-                        {{form.año_edicion.label_tag}}
-                        <div>{{form.año_edicion}}</div>
-                    </div>
-                    <div class="mb-2">
-                        {{form.descripcion.errors}}
-                        {{form.descripcion.label_tag}}
-                        <div>{{form.descripcion}}</div> 
-                    </div>
-                    <div class="mb-2">
-                        {{form.editoriales.errors}}
-                        {{form.editoriales.label_tag}}
-                        <div>{{form.editoriales}}</div>
-                    </div>
-                    <div class="mb-2">
-                        {{form.idioma.errors}}
-                        {{form.idioma.label_tag}}
-                        <div>{{form.idioma}}</div>
-                    </div>
-                    <button type="submit" class="btn btn-secondary mt-2">Alta</button>
-                </form>
+        {% if user.is_authenticated %}
+        <p>Hola, {{user.username}}</p>
+        {% endif %}
+            <div class="row my-4">
+                <div class="col-md-12">
+                    <form action="" method="POST" class="form">
+                        {% csrf_token %}
+                        <div class="mb-2">
+                            {{form.titulo.errors}}
+                            {{form.titulo.label_tag}}
+                            <div>{{form.titulo}}</div>
+                        </div>
+                        <div class="mb-2">
+                            {{form.genero.errors}}
+                            {{form.genero.label_tag}}
+                            <div>{{form.genero}}</div>
+                        </div>
+                        <div class="mb-2">
+                            {{form.autor.errors}}
+                            {{form.autor.label_tag}}
+                            <div>{{form.autor}}</div>
+                        </div>
+                        <div class="mb-2">
+                            {{form.isbn.errors}}
+                            {{form.isbn.label_tag}}
+                            <div>{{form.isbn}}</div>
+                        </div>
+                        <div class="mb-2">
+                            {{form.año_ingreso.errors}}
+                            {{form.año_ingreso.label_tag}}
+                            <div>{{form.año_ingreso}}</div>
+                        </div>
+                        <div class="mb-2">
+                            {{form.año_edicion.errors}}
+                            {{form.año_edicion.label_tag}}
+                            <div>{{form.año_edicion}}</div>
+                        </div>
+                        <div class="mb-2">
+                            {{form.descripcion.errors}}
+                            {{form.descripcion.label_tag}}
+                            <div>{{form.descripcion}}</div> 
+                        </div>
+                        <div class="mb-2">
+                            {{form.editoriales.errors}}
+                            {{form.editoriales.label_tag}}
+                            <div>{{form.editoriales}}</div>
+                        </div>
+                        <div class="mb-2">
+                            {{form.idioma.errors}}
+                            {{form.idioma.label_tag}}
+                            <div>{{form.idioma}}</div>
+                        </div>
+                        <button type="submit" class="btn btn-secondary mt-2">Alta</button>
+                    </form>
+                </div>
             </div>
-        </div>
 </div>
 {% endblock %}

@@ -3,7 +3,7 @@ from django.http import HttpResponseNotFound, HttpResponseRedirect
 from .forms import contactoForm, AltaLibro, AltaAutor
 from django.contrib import messages
 from .models import Libro, Autor
-
+from django.contrib.auth.decorators import login_required, permission_required
 # Create your views here.
 
 def index(request):
@@ -29,7 +29,8 @@ def catalogo(request, año=0):
    }
    return render(request, 'sistema_biblioteca/catalogo.html', context)
 
-
+#logeo para poder dar de alta libro
+@login_required(login_url="/usuarios/login_user")
 def biblioteca(request, año = 2022):
    l = Libro.objects.all()
    
@@ -85,7 +86,8 @@ def login(request):
 
    return render(request, 'sistema_biblioteca/login.html', context)
 
-
+#logeo para poder dar de alta autor
+@login_required(login_url="/usuarios/login_user")
 def alta_autor(request):
 
    a = Autor.objects.all()

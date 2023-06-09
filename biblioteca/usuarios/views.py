@@ -15,7 +15,7 @@ def login_user(request):
             login(request, user)
             return redirect('index')
           else:
-            messages.success(request, ("Hubo un error al ingresar, verifique y vuelva a intentar"))
+            messages.error(request, "Hubo un error al ingresar, verifique y vuelva a intentar")
             return redirect('login')
         else:
             return render(request, 'authenticate/login.html', context)

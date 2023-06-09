@@ -1,5 +1,4 @@
 from django import forms
-from typing import Any, Dict 
 from .models import Libro, Autor, Editorial, Genero
 DESTINO_CHOICES = (
     ("informacion_personal", "Información general"),
@@ -42,7 +41,7 @@ class contactoForm(forms.Form):
         required=False
     )
 
-    def clean(self) -> Dict[str, Any]:
+    def clean(self):
         # Se buscan los datos del form
         super(contactoForm, self).clean()
         nombre = self.cleaned_data.get('nombre')
@@ -160,11 +159,10 @@ class AltaAutor(forms.ModelForm):
         model = Autor
         fields = '__all__'
         widgets = {
-            "nombre":forms.TextInput(attrs={'size':'70'}),
-            "apellido":forms.TextInput(attrs={'size':'70'}),
-            "nacionalidad":forms.TextInput(attrs={'size':'70'}),                  
+            "nombre":forms.TextInput(attrs={'class':'form-control'}),
+            "apellido":forms.TextInput(attrs={'class':'form-control'}),
+            "nacionalidad":forms.TextInput(attrs={'class':'form-control'}),                  
         }
-        def __init__(self, *args, **kwargs ):
-         super(AltaAutor, self).__init__(*args, **kwargs)
+
 
 

@@ -1,4 +1,7 @@
 .navbar-link ul li a{
-
     display: none;
+}
+
+.saludo {
+    font-size: 1.1rem;
 }

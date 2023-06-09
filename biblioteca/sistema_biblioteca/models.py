@@ -31,13 +31,13 @@ class Autor(Persona):
 class Genero(models.Model):
     genero = models.CharField(max_length=20, verbose_name="Género", default="Género")
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.genero}"
 
 class Editorial(models.Model):
     editorial = models.CharField(max_length=20, verbose_name="Editorial")
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.editorial}"
 
 class Libro(models.Model):
@@ -51,7 +51,7 @@ class Libro(models.Model):
     editoriales = models.ManyToManyField(Editorial)
     idioma = models.CharField(verbose_name="Idioma", max_length=20)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.titulo} - {self.autor} - {self.isbn} - {self.año_ingreso} - {self.idioma} "
     
 class Prestamo_Libro(models.Model):

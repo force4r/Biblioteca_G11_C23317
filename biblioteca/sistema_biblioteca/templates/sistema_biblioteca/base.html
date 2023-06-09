@@ -29,15 +29,21 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Biblioteca
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url 'biblioteca' %}">Alta de Libro</a>
-                            <a class="dropdown-item" href="{% url 'alta_autor' %}">Alta de Autor</a>
-                            </div>
-                        </li>
+                        {% if perms.sistema_biblioteca.add_libro and perms.sistema_biblioteca.add_autor %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Biblioteca
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    {% if perms.sistema_biblioteca.add_libro %}
+                                        <a class="dropdown-item" href="{% url 'biblioteca' %}">Alta de Libro</a>
+                                    {% endif %}
+                                    {% if perms.sistema_biblioteca.add_autor %}
+                                <a class="dropdown-item" href="{% url 'alta_autor' %}">Alta de Autor</a>
+                                    {% endif %}
+                                </div>
+                            </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'catalogo' %}">Catalogo</a>
                         </li>

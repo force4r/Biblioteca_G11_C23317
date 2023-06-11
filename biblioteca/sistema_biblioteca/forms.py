@@ -140,6 +140,7 @@ class AltaLibro(forms.ModelForm):
             "editoriales": forms.SelectMultiple(attrs={'class':'form-select'}),
             "año_ingreso": forms.TextInput(attrs={'class':'form-control'}),
             "año_edicion": forms.TextInput(attrs={'class':'form-control'}),
+            "imagen":forms.ImageField(required=False)
         }
 
     def __init__(self, *args, **kwargs ):

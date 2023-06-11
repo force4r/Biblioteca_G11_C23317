@@ -50,6 +50,7 @@ class Libro(models.Model):
     descripcion = models.TextField(max_length= 3000, verbose_name="Descripcion")
     editoriales = models.ManyToManyField(Editorial)
     idioma = models.CharField(verbose_name="Idioma", max_length=20)
+    portada = models.ImageField(upload_to='images/', null=True, verbose_name="Portada")
 
     def __str__(self):
         return f"{self.titulo} - {self.autor} - {self.isbn} - {self.año_ingreso} - {self.idioma} "

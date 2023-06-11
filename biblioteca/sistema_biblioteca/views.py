@@ -13,14 +13,8 @@ def index(request):
 
 
 def catalogo(request, año=0):
-   if int(año) < 2015 and int(año) != 0:
-      return HttpResponseNotFound("<h4>No hay datos previos al año 2015.</h4>")
 
    libro = Libro.objects.all().order_by("-id")
-   # idioma = Idioma.objects.all().order_by("-id")
-   # editorial = Editorial.objects.all().order_by("-id")
-   # idioma = Idioma.objects.all()
-   # editorial = Editorial.objects.all()
    context = {
       'libro': libro,
       'año_ingreso': año,
@@ -31,10 +25,8 @@ def catalogo(request, año=0):
 @login_required(login_url="/usuarios/login_user")
 def biblioteca(request, año = 2022):
    l = Libro.objects.all()
-   
-
    if request.method == "POST":
-      form = AltaLibro(request.POST)
+      form = AltaLibro(request.POST, request.FILES)
 
       if form.is_valid():
             # Guarde la instancia nueva

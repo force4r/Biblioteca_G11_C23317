@@ -60,10 +60,15 @@
                             Año de ingreso: {{libro.año_ingreso}}<br>
                             Año de edición: {{libro.año_edicion}}<br>
                             Idioma: {{libro.idioma}}
+                            <br>
+                            {% if libro.portada %}
+                            <img src="{{libro.portada.url}}" alt="portada libro"
+                                style="width: 200px; height: 300px; margin-right: 10px;">
+                            {% endif %}
                             
                         </p>
-                        <img src="{% static 'sistema_biblioteca/img/libro.png' %}" class="card-img-top" alt="..."
-                            style="height: 120px; width: 90px;">
+                        <!-- <img src="{% static 'sistema_biblioteca/img/libro.png' %}" class="card-img-top" alt="..."
+                            style="height: 120px; width: 90px;"> -->
                     </div>
                 </div>
             </div>

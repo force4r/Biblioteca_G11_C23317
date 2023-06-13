@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
 from django import forms
+from usuarios.models import Usuario
 
 class RegisterUserForm(UserCreationForm):
     email = forms.EmailField(
@@ -23,7 +23,7 @@ class RegisterUserForm(UserCreationForm):
         )
     
     class Meta:
-        model = User
+        model = Usuario 
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
 
     def __init__(self, *args, **kwargs):

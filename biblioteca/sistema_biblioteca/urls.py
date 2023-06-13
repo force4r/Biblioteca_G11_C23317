@@ -12,5 +12,7 @@ urlpatterns = [
     path('biblioteca/<int:año>/',views.biblioteca, name='biblioteca'),
     path('biblioteca/',views.biblioteca, name='biblioteca'),
     path('alta_autor/', views.alta_autor, name="alta_autor"),
+    path('alta_genero/', views.alta_genero, name="alta_genero"),
+    path('alta_editorial/', views.alta_editorial, name="alta_editorial"),
     path('contacto/', views.contacto, name="contacto"),
 ]

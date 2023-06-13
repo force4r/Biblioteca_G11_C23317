@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseNotFound, HttpResponseRedirect 
-from .forms import contactoForm, AltaLibro, AltaAutor
+from .forms import contactoForm, AltaLibro, AltaAutor, AltaGenero, AltaEditorial
 from django.contrib import messages
-from .models import Libro, Autor
+from .models import Libro, Autor, Genero, Editorial
 from django.contrib.auth.decorators import login_required, permission_required
 # Create your views here.
 
@@ -99,3 +99,49 @@ def alta_autor(request):
       'autor' : a
       }
    return render(request, 'sistema_biblioteca/alta_autor.html', context)
+
+@login_required(login_url="/usuarios/login_user")
+def alta_genero(request):
+
+   g = Genero.objects.all()
+
+   if request.method == "POST":
+      form = AltaGenero(request.POST)
+      if form.is_valid():
+         form.save()
+         messages.add_message(request, messages.SUCCESS, 'Genero dado de alta con éxito', extra_tags="alert alert-success list-unstyled")
+
+      else:
+         messages.error(request, 'Por favor revise los campos a completar', extra_tags="alert alert-danger list-unstyled")   
+         return redirect("alta_genero")
+      
+   else:
+      form = AltaGenero()
+   context = {
+      'form': form,
+      'genero' : g
+      }
+   return render(request, 'sistema_biblioteca/alta_genero.html', context)
+
+@login_required(login_url="/usuarios/login_user")
+def alta_editorial(request):
+
+   e = Editorial.objects.all()
+
+   if request.method == "POST":
+      form = AltaEditorial(request.POST)
+      if form.is_valid():
+         form.save()
+         messages.add_message(request, messages.SUCCESS, 'Editorial dado de alta con éxito', extra_tags="alert alert-success list-unstyled")
+
+      else:
+         messages.error(request, 'Por favor revise el campo a completar', extra_tags="alert alert-danger list-unstyled")   
+         return redirect("alta_editorial")
+      
+   else:
+      form = AltaEditorial()
+   context = {
+      'form': form,
+      'editorial' : e
+      }
+   return render(request, 'sistema_biblioteca/alta_editorial.html', context)

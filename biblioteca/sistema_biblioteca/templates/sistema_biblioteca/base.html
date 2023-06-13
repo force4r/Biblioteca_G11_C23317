@@ -41,8 +41,15 @@
                                         <a class="dropdown-item" href="{% url 'biblioteca' %}">Alta de Libro</a>
                                     {% endif %}
                                     {% if perms.sistema_biblioteca.add_autor %}
-                                <a class="dropdown-item" href="{% url 'alta_autor' %}">Alta de Autor</a>
+                                        <a class="dropdown-item" href="{% url 'alta_autor' %}">Alta de Autor</a>
                                     {% endif %}
+                                    {% if perms.sistema_biblioteca.add_genero %}
+                                        <a class="dropdown-item" href="{% url 'alta_genero' %}">Alta de Género</a>
+                                    {% endif %}
+                                    {% if perms.sistema_biblioteca.add_editorial %}
+                                        <a class="dropdown-item" href="{% url 'alta_editorial' %}">Alta de Editorial</a>
+                                    {% endif %}
+
                                 </div>
                             </li>
                         </ul>

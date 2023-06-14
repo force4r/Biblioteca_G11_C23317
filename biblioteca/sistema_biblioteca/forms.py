@@ -165,5 +165,21 @@ class AltaAutor(forms.ModelForm):
             "nacionalidad":forms.TextInput(attrs={'class':'form-control'}),                  
         }
 
+class AltaGenero(forms.ModelForm):
+    
+    class Meta:
+        model = Genero
+        fields = '__all__'
+        widgets = {
+            "genero":forms.TextInput(attrs={'class':'form-control' , 'placeholder':'Género'} ),        
+        }
 
+class AltaEditorial(forms.ModelForm):
+    
+    class Meta:
+        model = Editorial
+        fields = '__all__'
+        widgets = {
+            "editorial":forms.TextInput(attrs={'class':'form-control', 'placeholder':'Editorial'}),        
+        }
 

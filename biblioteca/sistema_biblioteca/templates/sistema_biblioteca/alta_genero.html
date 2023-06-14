@@ -1,0 +1,28 @@
+{% extends 'sistema_biblioteca/base.html' %}
+{% load static %}
+{%block extra_css %}
+<link rel="stylesheet" href="{% static 'sistema_biblioteca/css/alta_genero.css' %}"> {% endblock %}
+{% block titulo %}Alta de géneros{% endblock %}
+{% block contenido %}
+<div class="container">
+    <h2 class="mt-3">Gestion de géneros</h2>
+    {% if user.is_authenticated %}
+    <p class="mt-3 saludo">Hola, {{user.username}}</p>
+    {% endif %}
+    <div class="row my-4">
+        <div class="col-md-12">
+            <form action="" method="POST" class="form">
+                {% csrf_token %}
+                <div class="mb-2">
+                    {{form.genero.errors}}
+                    {{form.genero.label_tag}}
+                    <div>{{form.genero}}</div>
+                </div>
+
+                <button type="submit" class="btn btn-secondary mt-2">Alta</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

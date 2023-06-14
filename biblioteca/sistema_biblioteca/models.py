@@ -25,7 +25,7 @@ class Autor(Persona):
     nacionalidad = models.CharField(max_length=15, verbose_name="Nacionalidad")
     
     def __str__(self):
-        return super().__str__() + f" {self.nacionalidad}"
+        return super().__str__() + f" - {self.nacionalidad}"
 
 
 class Genero(models.Model):

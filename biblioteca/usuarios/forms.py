@@ -20,11 +20,17 @@ class RegisterUserForm(UserCreationForm):
         label="Apellido",
         widget= forms.TextInput(attrs={'class':'form-control'}),
         required=True
-        )
+    )
+    
+    dni = forms.IntegerField(
+        label="DNI",
+        widget= forms.NumberInput(attrs={'class':'form-control'}),
+        required=True
+    )
     
     class Meta:
         model = Usuario 
-        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
+        fields = ('username', 'first_name', 'last_name', 'dni', 'email', 'password1', 'password2')
 
     def __init__(self, *args, **kwargs):
         super(RegisterUserForm, self).__init__(*args, **kwargs)

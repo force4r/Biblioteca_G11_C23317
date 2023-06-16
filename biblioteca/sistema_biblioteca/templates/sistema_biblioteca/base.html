@@ -54,6 +54,11 @@
                             </li>
                         </ul>
                         {% endif %}
+                        {% if perms.sistema_biblioteca.add_prestamo_libro %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'reserva' %}">Reserva</a>
+                        </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'catalogo' %}">Catalogo</a>
                         </li>

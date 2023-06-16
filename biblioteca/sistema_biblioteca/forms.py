@@ -1,5 +1,6 @@
 from django import forms
-from .models import Libro, Autor, Editorial, Genero
+from .models import Libro, Autor, Editorial, Genero, Prestamo_Libro
+from usuarios.models import Usuario
 DESTINO_CHOICES = (
     ("informacion_personal", "Información general"),
     ("recomendacion_libro", "Recomendación de libro"),
@@ -183,3 +184,10 @@ class AltaEditorial(forms.ModelForm):
             "editorial":forms.TextInput(attrs={'class':'form-control', 'placeholder':'Editorial'}),        
         }
 
+class Reservas(forms.ModelForm):
+    
+    class Meta:
+        model = Prestamo_Libro
+        fields = ["reserva", "libro"]
+        exclude = ["fecha_prestamo_fin"]
+        reserva = forms.BooleanField(initial=False, label="Quiero reservar el libro") 

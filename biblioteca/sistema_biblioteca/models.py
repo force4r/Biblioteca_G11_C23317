@@ -1,31 +1,14 @@
 from django.db import models
+from usuarios.models import Usuario
 
-
-
-
-class Persona(models.Model):
+class Autor(models.Model):
     nombre = models.CharField(max_length=50, verbose_name="Nombre")
     apellido = models.CharField(max_length=80, verbose_name="Apellido")
-    class Meta:
-        abstract =True
-    
-    def __str__(self):
-        return f"{self.apellido} {self.nombre}"
-
-class Lector(Persona):
-    mail = models.EmailField(max_length=128, verbose_name="Email")
-    dni = models.IntegerField(verbose_name="Dni", default=0000000)
-
-class Bibliotecario(Persona):
-    legajo = models.IntegerField(verbose_name="Legajo")
-    fecha_inicio = models.DateField(verbose_name="Fecha de inicio")
-    dni = models.IntegerField(verbose_name="Dni", default=0000000)
-
-class Autor(Persona):
     nacionalidad = models.CharField(max_length=15, verbose_name="Nacionalidad")
     
     def __str__(self):
-        return super().__str__() + f" - {self.nacionalidad}"
+        return f"{self.apellido} {self.nombre}"
+  
 
 
 class Genero(models.Model):
@@ -57,10 +40,10 @@ class Libro(models.Model):
     
 class Prestamo_Libro(models.Model):
     libro = models.ForeignKey(Libro, on_delete=models.CASCADE, verbose_name="Libro")
-    fecha_prestamo_inicio = models.DateField(verbose_name="Inicio del prestamo")
-    fecha_prestamo_fin = models.DateField(verbose_name="Fin del prestamo")
-    lector = models.OneToOneField(Lector, on_delete=models.CASCADE, primary_key=True, verbose_name="Usuario asociado al préstamo")
-
+    fecha_prestamo_inicio = models.DateField(verbose_name="Inicio del prestamo", auto_now_add=True)
+    fecha_prestamo_fin = models.DateField(verbose_name="Fin del prestamo", null=True)
+    lector = models.OneToOneField(Usuario, on_delete=models.CASCADE, primary_key=True, verbose_name="Usuario asociado al préstamo")
+    reserva = models.BooleanField(default=False)
 
 
 

@@ -1,8 +1,6 @@
 from . import views
-from django.conf import settings
-from django.conf.urls.static import static
-from django.contrib import admin, auth
-from django.urls import include, path
+from django.urls import path
+from.views import LibrosPrestadosPorUsuario
 
 
 urlpatterns = [
@@ -16,4 +14,5 @@ urlpatterns = [
     path('alta_genero/', views.alta_genero, name="alta_genero"),
     path('alta_editorial/', views.alta_editorial, name="alta_editorial"),
     path('contacto/', views.contacto, name="contacto"),
+    path('mis_reservas/', LibrosPrestadosPorUsuario.as_view(), name="mis_reservas")
 ]

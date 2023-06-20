@@ -1,5 +1,6 @@
 from django.db import models
 from usuarios.models import Usuario
+from datetime import datetime, timedelta
 
 class Autor(models.Model):
     nombre = models.CharField(max_length=50, verbose_name="Nombre")
@@ -8,11 +9,11 @@ class Autor(models.Model):
     
     def __str__(self):
         return f"{self.apellido} {self.nombre}"
-  
+
 
 
 class Genero(models.Model):
-    genero = models.CharField(max_length=20, verbose_name="Género", default="Género")
+    genero = models.CharField(max_length=20, verbose_name="Género")
 
     def __str__(self):
         return f"{self.genero}"
@@ -40,11 +41,13 @@ class Libro(models.Model):
     
 class Prestamo_Libro(models.Model):
     libro = models.ForeignKey(Libro, on_delete=models.CASCADE, verbose_name="Libro")
-    fecha_prestamo_inicio = models.DateField(verbose_name="Inicio del prestamo", auto_now_add=True)
-    fecha_prestamo_fin = models.DateField(verbose_name="Fin del prestamo", null=True)
+    fecha_prestamo_inicio = models.DateField(verbose_name="Inicio del prestamo", default=datetime.now)
+    fecha_prestamo_fin = models.DateField(verbose_name="Fin del prestamo", default=datetime.now()+timedelta(days=30))
     lector = models.OneToOneField(Usuario, on_delete=models.CASCADE, primary_key=True, verbose_name="Usuario asociado al préstamo")
     reserva = models.BooleanField(default=False)
 
+    def __str__(self):
+        return f"{self.libro.titulo} - {self.lector}"
 
 
 

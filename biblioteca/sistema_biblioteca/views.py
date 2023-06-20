@@ -1,10 +1,14 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
-from django.http import HttpResponseNotFound, HttpResponseRedirect 
+from django.http import HttpResponseRedirect 
 from .forms import contactoForm, AltaLibro, AltaAutor, AltaGenero, AltaEditorial, Reservas
 from django.contrib import messages
 from .models import Libro, Autor, Genero, Editorial, Prestamo_Libro
 from django.contrib.auth.decorators import login_required, permission_required
 from usuarios.models import Usuario
+from django.views.generic import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
@@ -22,6 +26,8 @@ def catalogo(request, año=0):
       'año_ingreso': año,
    }
    return render(request, 'sistema_biblioteca/catalogo.html', context)
+
+
 @permission_required("sistema_biblioteca.add_prestamo_libro")
 def reserva(request):
 
@@ -30,19 +36,18 @@ def reserva(request):
 
    if request.method == "POST":
       form = Reservas(request.POST)
-     
       if form.is_valid():
-           nueva_reserva = Prestamo_Libro.objects.create(
+         nueva_reserva = Prestamo_Libro.objects.create(
                      #Guarda el usuario activo
-                    lector = Usuario.objects.get(pk=request.user.id),
-                    libro = form.cleaned_data["libro"],
-                    reserva = form.cleaned_data["reserva"]
-                )
-          
-           nueva_reserva.save()
-           
+                  lector = Usuario.objects.get(pk=request.user.id),
+                  libro = form.cleaned_data["libro"],
+                  reserva = form.cleaned_data["reserva"],
+         )
+         
+         nueva_reserva.save()
+         
          #form.save()
-           messages.add_message(request, messages.SUCCESS, 'Libro reservado', extra_tags="alert alert-success list-unstyled")
+         messages.add_message(request, messages.SUCCESS, 'Libro reservado', extra_tags="alert alert-success list-unstyled")
 
       else:
          messages.error(request, 'Por favor intente de nuevo', extra_tags="alert alert-danger list-unstyled")   
@@ -55,6 +60,16 @@ def reserva(request):
       'form': form,
    }
    return render(request, 'sistema_biblioteca/reserva.html', context)
+
+
+class LibrosPrestadosPorUsuario(LoginRequiredMixin, ListView):
+   model = Prestamo_Libro
+   template_name = 'sistema_biblioteca/mis_reservas.html'
+   paginate_by = 10
+
+   def get_queryset(self):
+      return Prestamo_Libro.objects.filter(lector=self.request.user).filter(reserva=True).order_by('fecha_prestamo_fin')
+
 
 #logeo para poder dar de alta libro
 @login_required(login_url="/usuarios/login_user")

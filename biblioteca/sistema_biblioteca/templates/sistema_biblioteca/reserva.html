@@ -12,7 +12,7 @@
     {% endif %}
     <div class="row my-4">
         <div class="col-md-12">
-            <form action="" method="POST" class="form" enctype="multipart/form-data">
+            <form action="" method="POST" class="form">
                 {% csrf_token %}
                 <div class="mb-2">
                     {{form.libro.errors}}
@@ -22,12 +22,9 @@
                 <div class="mb-2">
                     {{form.reserva.errors}}
                     {{form.reserva.label_tag}}
-                    <div>{{form.reserva}}</div>
+                    <span>{{form.reserva}}</span>
                 </div>
-             
-              
-               
-                <button type="submit" class="btn btn-secondary mt-2">Alta</button>
+                <button type="submit" class="btn btn-secondary mt-2">Confirmar</button>
             </form>
         </div>
     </div>

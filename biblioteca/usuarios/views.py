@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from .forms import RegisterUserForm
+from django.contrib.auth.models import Group
+from .models import Usuario
 
 
 
@@ -33,6 +35,10 @@ def register_user(request):
         form = RegisterUserForm(request.POST)
         if form.is_valid():
             form.save()
+            #Intento de asignar automaticamente a Grupos
+            #grupo = Group.objects.get(name='Lector')
+            #user = Usuario.objects.get(username="username")
+            #user.groups.add(grupo)
             username= form.cleaned_data['username']
             password= form.cleaned_data['password1']
             user= authenticate(username=username, password=password)

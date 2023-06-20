@@ -1,6 +1,6 @@
 from django import forms
 from .models import Libro, Autor, Editorial, Genero, Prestamo_Libro
-from usuarios.models import Usuario
+
 DESTINO_CHOICES = (
     ("informacion_personal", "Información general"),
     ("recomendacion_libro", "Recomendación de libro"),
@@ -64,67 +64,6 @@ class contactoForm(forms.Form):
         return self.cleaned_data
     
 
-
-"""
-class AltaLibro(forms.Form):
-    
-    titulo = forms.CharField(
-        
-        label='Titulo',
-        widget= forms.TextInput(attrs={'class':'form-control'}),
-        required=True
-    )
-
-    genero = forms.ModelChoiceField(
-        queryset= Genero.objects.values_list("genero", flat=True),
-        label='Genero',
-        widget= forms.Select(attrs={'class':'form-select'}),
-        required=True 
-    )
-
-    autor = forms.ModelChoiceField(
-        queryset=Autor.objects.values_list(),
-        label='Nombre del Autor',
-        widget= forms.Select(attrs={'class':'form-select'}),
-        required=True 
-    )
-
-    isbn = forms.CharField(
-        label='ISBN',
-        widget= forms.TextInput(attrs={'class':'form-control'}),
-        required=True 
-    )
-
-    año_ingreso = forms.IntegerField(
-    label='Año de ingreso',
-    widget= forms.TextInput(attrs={'class':'form-control'}),
-    required=True 
-    )
-
-    año_edicion = forms.IntegerField(
-        label='Año de edicion',
-        widget= forms.TextInput(attrs={'class':'form-control'}),
-        required=True 
-    )
-
-    descripcion = forms.CharField(
-        label='Descripción',
-        widget= forms.Textarea(attrs={'class':'form-control'}),
-        required=True 
-    )
-
-    editoriales = forms.ChoiceField(
-        label='Editoriales',
-        widget= forms.Select(attrs={'class':'form-select'}),
-        required=True 
-    )
-
-    idiomas = forms.CharField(
-        label='Idioma',
-        widget= forms.TextInput(attrs={'class':'form-control'}),
-        required=True 
-    )
-"""
 class AltaLibro(forms.ModelForm):
 
     class Meta:
@@ -190,4 +129,8 @@ class Reservas(forms.ModelForm):
         model = Prestamo_Libro
         fields = ["reserva", "libro"]
         exclude = ["fecha_prestamo_fin"]
-        reserva = forms.BooleanField(initial=False, label="Quiero reservar el libro") 
+        widgets={
+            "libro": forms.Select(attrs={'class':'form-select'}),
+        }
+        
+        

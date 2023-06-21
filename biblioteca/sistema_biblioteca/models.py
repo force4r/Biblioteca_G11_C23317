@@ -44,7 +44,7 @@ class Prestamo_Libro(models.Model):
     fecha_prestamo_inicio = models.DateField(verbose_name="Inicio del prestamo", default=datetime.now)
     fecha_prestamo_fin = models.DateField(verbose_name="Fin del prestamo", default=datetime.now()+timedelta(days=30))
     lector = models.OneToOneField(Usuario, on_delete=models.CASCADE, primary_key=True, verbose_name="Usuario asociado al préstamo")
-    reserva = models.BooleanField(default=False)
+    reserva = models.BooleanField(default=False, verbose_name="Confirme su reserva")
 
     def __str__(self):
         return f"{self.libro.titulo} - {self.lector}"

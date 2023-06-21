@@ -32,7 +32,6 @@ def catalogo(request, año=0):
 def reserva(request):
 
    libro = Libro.objects.all().order_by("-id")
-   #reserva = Prestamo_Libro.objects.all().order_by(libro)
 
    if request.method == "POST":
       form = Reservas(request.POST)

@@ -131,6 +131,7 @@ class Reservas(forms.ModelForm):
         exclude = ["fecha_prestamo_fin"]
         widgets={
             "libro": forms.Select(attrs={'class':'form-select'}),
+            "reserva":forms.CheckboxInput(attrs={'type': 'checkbox', 'class': 'form-checkbox'})
         }
         
         

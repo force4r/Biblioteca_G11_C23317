@@ -55,11 +55,14 @@
                         </ul>
                         {% endif %}
                         {% if perms.sistema_biblioteca.add_prestamo_libro %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'reserva' %}">Reserva</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'mis_reservas' %}">Mis Reservas</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Gestion de Reservas
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="{% url 'reserva' %}">Realizar Reserva</a>
+                              <a class="dropdown-item" href="{% url 'mis_reservas' %}">Mis Reservas</a>
+                            </div>
                         </li>
                         {% endif %}
                         <li class="nav-item">
